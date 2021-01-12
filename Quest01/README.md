@@ -77,6 +77,8 @@
 
 * vi는 어떤 에디터인가요? vi와 vim은 어떻게 다를까요? vi는 왜 모든 리눅스의 기본 에디터가 되었을까요?
 --> vim(Vi Improved) : graphical mode(gvim) 기능 추가
+    vi는 유닉스에서만 가능, vim은 windows, mac, amiga 등에서도 가능, 문법 강조 기능 지원
+    vim은 X-Windows, Mac, Windows 등 GUI 환경에서 잘 구동
     Emacs가 유료였던 시절에 텍스트 편집이 편한 vi가 인기를 끔, 텍스트 조작하는 기능에 치중
 
 ## Quest
