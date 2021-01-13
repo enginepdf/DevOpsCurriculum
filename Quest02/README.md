@@ -38,7 +38,9 @@
 
 ## Quest
 * node.js 최신 LTS 버전을 설치합니다.(O)
-* 다음과 같이 입력에 따라 별의 산을 툴력하는 프로그램을 작성합니다.
+* 다음과 같이 입력에 따라 별의 산을 툴력하는 프로그램을 작성합니다.(O)
+  https://github.com/enginepdf/Javascript/blob/master/quest02.js
+  
 ```
 $ node quest02.js 5
     *
