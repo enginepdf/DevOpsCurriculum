@@ -111,29 +111,29 @@ traceroute to google.com (216.58.200.78), 64 hops max, 52 byte packets
  6  1.208.144.193 : 서울특별시 강남구 역삼동
     1.213.106.125 : 서울특별시 강남구 역삼동
     1.208.106.117 : 서울특별시 강남구 역삼동
- 7  1.208.165.133
-    1.208.165.77
-    1.208.165.113
- 8  210.120.198.13
-    1.208.104.57
-    1.208.105.253
- 9  1.208.0.74
-    61.42.0.118
-    1.208.145.38
-10  1.208.148.206
-    1.208.106.210
-    1.208.148.206
-11  74.125.118.154
-    72.14.215.29
-12  10.23.215.30
-13  72.14.239.94
-    108.170.233.0
-    108.170.241.97
-14  209.85.254.177
-    108.170.241.80
-    209.85.254.177
-15  216.58.200.78
-    172.253.64.172
+ 7  1.208.165.133 : 서울특별시 강남구 역삼동
+    1.208.165.77 : 서울특별시 강남구 역삼동
+    1.208.165.113 : 서울특별시 강남구 역삼동
+ 8  210.120.198.13 : 210.120.198.13
+    1.208.104.57 : 서울특별시 강남구 역삼동
+    1.208.105.253 : 서울특별시 강남구 역삼동
+ 9  1.208.0.74 : 서울특별시 강남구 역삼동
+    61.42.0.118  : 서울특별시 강남구 역삼동
+    1.208.145.38 : 서울특별시 강남구 역삼동
+10  1.208.148.206 : Seoul
+    1.208.106.210 : Seoul
+    1.208.148.206 : Seoul
+11  74.125.118.154 : Located in City Mountain View [ California ]
+    72.14.215.29 : Located in City Mountain View [ California ]
+12  10.23.215.30 : Seoul
+13  72.14.239.94 : Located in City Mountain View [ California ]
+    108.170.233.0 : Located in City Mountain View [ California ]
+    108.170.241.97 : Located in City Mountain View [ California ]
+14  209.85.254.177 : Located in City Mountain View [ California ]
+    108.170.241.80 : Located in City Mountain View [ California ]
+    209.85.254.177 : Located in City Mountain View [ California ]
+15  216.58.200.78 : Located in City Mountain View [ California ]
+    172.253.64.172 : Located in City Mountain View [ California ]
 
 * Wireshark를 통해 `www.google.com` 으로 요청을 날렸을 떄 어떤 TCP 패킷이 오가는지 확인해 보세요
 
