@@ -28,7 +28,7 @@
          웹 브라우저에 www.knowre.com 입력 
          Local DNS에 'www.knowre.com'이라는 host name에 대한 ip 주소 물어봄
          ip 주소 알고 있다면 Local DNS에서 요청 pc에 ip 주소 리턴, 아니라면 Local DNS는 다른 DNS 서버들과 통신(DNS 메시지) 시작. 먼저 Root DNS서버에게 'www.knowre.com'의 ip 주소 질의
-         안다면 해당 ip 주소를 Local DNS가 캐싱을 하고(추후 같은 요청에 대해 빠른 응답을 위함), 모른다면 Local DNS 서버는 'knowre.com' 도메인 관리 DNS 서버에 'www.knowre.com'에 대한 ip 주소 질의
+         안다면 해당 ip 주소를 Local DNS가 캐싱을 하고(추후 같은 요청에 대해 빠른 응답을 위함), 모른다면 Local DNS 서버는 Root DNS 서버로부터 'knowre.com' 도메인 관리 DNS 서버 정보를 전달 받고 해당 서버에 'www.knowre.com'에 대한 ip 주소 질의
          'knowre.com' 도메인 관리 DNS 서버가 Local DNS 서버로 'www.knowre.com'에 대한 ip 주소 정보를 보내고 이를 Local DNS는 캐싱을 함(추후 같은 요청에 빠른 응답을 위해) 그리고 PC에 전달
 
 ## Quest
