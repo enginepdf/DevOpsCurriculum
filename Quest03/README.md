@@ -34,8 +34,8 @@
 ## Quest
 * tracert(Windows가 아닌 경우 traceroute) 명령을 통해 `www.google.com` 까지 가는 경로를 찾아 보세요.
 
-    traceroute google.com
-    traceroute to google.com (216.58.200.78), 64 hops max, 52 byte packets
+        * traceroute google.com
+        * traceroute to google.com (216.58.200.78), 64 hops max, 52 byte packets
         * 1  192.168.0.1 (192.168.0.1)  2.582 ms  1.756 ms  1.767 ms
         * 2  -  5.155 ms  4.315 ms  5.799 ms
         * 3  10.203.187.213 (10.203.187.213)  5.883 ms  6.656 ms
