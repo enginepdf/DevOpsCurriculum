@@ -23,12 +23,45 @@
 
 ## Checklist
 * 인터넷은 어떻게 동작하나요? OSI 7 Layer에 입각하여 설명해 보세요.
+
+         계층 1 : 물리 계층(Physical Layer)
+            실제 장치 연결 위한 전기적, 물리적 세부 사항 정의
+            핀들의  배치, 전압, 전선의 명세
+            허브나 리피터가 물리 계층의 장치
+            물리적 정보 전달 매개체에 대한 연결의 성립 및 종료. 여러 사용자들 간의 통신 자원을 효율적 분배하는 데 관여
+            물리 계층에서 데이터 교환하는 방식은 회선 교환, 메시지 교환, 패킷 교환 방식
+
+         계층 2 : 데이터 링크 계층(Data Link Layer)
+            네트워크 위의 개체들 간 데이터 전달.
+            물리 계층에서 발생할 수 있는 오류 찾고 수정하는 데 필요한 기능적, 절차적 수단 제공
+
+         계층 3 : 네트워크 계층(Network Layer)
+            여러 개의 노드 거칠 때마다 경로 찾아주는 역할
+            라우팅, 흐름 제어, segmentation/desegmentation, 오류 제어, internetworking 등 수행
+
+         계층 4 : 전송 계층(Transport Layer)
+            양 끝단의 사용자들이 신뢰성 있는 데이터를 주고 받을 수 있도록 해주어, 상위 계층들이 데이터 전달의 유효성이나 효율성 생각하지 않도록 해줌
+            패킷들의 전송이 유효한지 확인하고 전송 실패한 패킷들을 다시 전송한다는 뜻
+
+         계층 5 : 세션 계층(Session Layer)
+            양 끝단의 응용 프로세스가 통신을 관리하기 위한 방법 제공
+            동시 송수신 방식(duplex), 반이중 방식(half-duplex), 전이중 방식(full duplex)의 통신과 함께, 체크 포인팅과 유휴, 종료, 다시 시작 과정 등을 수행. TCP/IP 세션을 만들고 없애는 책임을 짐
+            통신하는 사용자들을 동기화하고 오류 복구 명령들을 일괄적으로 다룸
+
+         계층 6 : 표현 계층(Presentation Layer)
+            코드 간의 번역 담당. 사용자 시스템에서 데이터의 형식 상 차이를 다루는 부담을 응용 계층으로부터 덜어 줌
+            MIME 인코딩, 암호화 등의 동작이 이루어짐
+
+         계층 7 : 응용 계층(Application Layer)
+            응용 프로세스와 직접 관계하여 일반적 응용 서비스 수행.
+            일반적 응용 서비스는 관련된 응용 프로세스들의 사이의 전환 제공
+            
 * 우리가 브라우저의 주소 창에 `www.knowre.com` 을 쳤을 때, 어떤 과정을 통해 노리의 서버 주소를 알게 되나요?
 
          웹 브라우저에 www.knowre.com 입력 
          Local DNS에 'www.knowre.com'이라는 host name에 대한 ip 주소 물어봄
          ip 주소 알고 있다면 Local DNS에서 요청 pc에 ip 주소 리턴, 아니라면 Local DNS는 다른 DNS 서버들과 통신(DNS 메시지) 시작. 먼저 Root DNS서버에게 'www.knowre.com'의 ip 주소 질의
-         안다면 해당 ip 주소를 Local DNS가 캐싱을 하고(추후 같은 요청에 대해 빠른 응답을 위함), 모른다면 Local DNS 서버는 Root DNS 서버로부터 'knowre.com' 도메인 관리 DNS 서버 정보를 전달 받고 해당 서버에 'www.knowre.com'에 대한 ip 주소 질의
+         안다면 해당 ip 주소를 Local DNS가 캐싱을 하고(추후 같은 요청에 대해 빠른 응답을 위함) PC에 ip 정보 전달, 모른다면 Local DNS 서버는 Root DNS 서버로부터 'knowre.com' 도메인 관리 DNS 서버 정보를 전달 받고 해당 서버에 'www.knowre.com'에 대한 ip 주소 질의
          'knowre.com' 도메인 관리 DNS 서버가 Local DNS 서버로 'www.knowre.com'에 대한 ip 주소 정보를 보내고 이를 Local DNS는 캐싱을 함(추후 같은 요청에 빠른 응답을 위해) 그리고 PC에 전달
 
 ## Quest
