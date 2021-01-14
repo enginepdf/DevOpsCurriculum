@@ -174,15 +174,15 @@
 
   * 그 헤더들은 어떤 역할을 하나요?
 
-            * Date : 메시지가 발생한 날짜와 시간 포함
-            * Expires : 응답이 만료되었다고 고려되는 날짜/시간
-            * Cache-Control : 요청과 응답 모두에서의 캐싱 메커니즘을 명시하는 지시문
-            * Content-Type : 리소스의 미디어 타입
-            * P3P(Platform for Privacy Preferences) : W3C에서 개발한 프라이버시 보호 관련 표준 기술, P3P를 적용한 사이트에서는 HTTP 헤더 또는 링크된 XML 파일을 통해 해당 사이트에서 취급하는 개인정보의 레벨이나 성격 등을 웹브라우저에서 알려줌
-            * Server : 요청을 처리하기 위해 오리진 서버에 의해 사용되는 소프트웨어에 대한 정보 포함 ex) gws : google web server
-            * X-XSS-Protection : 교차 사이트 스크립팅 필터링 활성화 여부
-            * X-Frame-Options(XFO) : 브라우저가 frame, iframe, embed 또는 object 태그에서 렌더링을 허용해야하는지를 나타냄
-            * Set-Cookie : 서버에서 유저 에이전트로 쿠키 전송
-            * Accept-Ranges : 서버가 범위 요청을 지원하는지 나타냄. 지원할 경우 범위가 표현될 수 있는 단위
-            * Vary : 오리진 서버로부터 새로운 요청을 하는 대신 캐시된 응답을 사용할지 결정하기 위한 향후의 요청 헤더를 매칭할 방법 정함
-            * Transfer-Encoding : 사용자에게 엔티티를 안전하게 전송하기 위해 사용할 인코딩 형식을 지정
+             Date : 메시지가 발생한 날짜와 시간 포함
+             Expires : 응답이 만료되었다고 고려되는 날짜/시간
+             Cache-Control : 요청과 응답 모두에서의 캐싱 메커니즘을 명시하는 지시문
+             Content-Type : 리소스의 미디어 타입
+             P3P(Platform for Privacy Preferences) : W3C에서 개발한 프라이버시 보호 관련 표준 기술, P3P를 적용한 사이트에서는 HTTP 헤더 또는 링크된 XML 파일을 통해 해당 사이트에서 취급하는 개인정보의 레벨이나 성격 등을 웹브라우저에서 알려줌
+             Server : 요청을 처리하기 위해 오리진 서버에 의해 사용되는 소프트웨어에 대한 정보 포함 ex) gws : google web server
+             X-XSS-Protection : 교차 사이트 스크립팅 필터링 활성화 여부
+             X-Frame-Options(XFO) : 브라우저가 frame, iframe, embed 또는 object 태그에서 렌더링을 허용해야하는지를 나타냄
+             Set-Cookie : 서버에서 유저 에이전트로 쿠키 전송
+             Accept-Ranges : 서버가 범위 요청을 지원하는지 나타냄. 지원할 경우 범위가 표현될 수 있는 단위
+             Vary : 오리진 서버로부터 새로운 요청을 하는 대신 캐시된 응답을 사용할지 결정하기 위한 향후의 요청 헤더를 매칭할 방법 정함
+             Transfer-Encoding : 사용자에게 엔티티를 안전하게 전송하기 위해 사용할 인코딩 형식을 지정
