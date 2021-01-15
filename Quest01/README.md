@@ -107,9 +107,9 @@
   * Topics의 환경변수나 퍼미션 관련 커맨드를 연습해 봅니다.(O)
   * 현재 실행되고 있는 프로세스들과 마운트 된 파일시스템들을 확인해 봅니다.(O)
   
-      ps
-      mount
-      cat /etc/mtab
+            ps
+            mount
+            cat /etc/mtab
 
   * vi를 열어 여러 가지 기본 명령과 간단한 편집 방법을 연습해 봅니다.(O)
 * 생성한 인스턴스 중 Ubuntu와 CentOS는 완전히 종료(Terminate)하고, Amazon Linux 2는 일단 꺼둡니다.(O)
