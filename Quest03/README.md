@@ -58,7 +58,7 @@
             
 * 우리가 브라우저의 주소 창에 `www.knowre.com` 을 쳤을 때, 어떤 과정을 통해 노리의 서버 주소를 알게 되나요?
 
-         웹 브라우저에 www.knowre.com 입력 
+         웹 브라우저에 'www.knowre.com' 입력 
          Local DNS에 'www.knowre.com'이라는 host name에 대한 ip 주소 물어봄
          ip 주소 알고 있다면 Local DNS에서 요청 pc에 ip 주소 리턴, 아니라면 Local DNS는 다른 DNS 서버들과 통신(DNS 메시지) 시작. 먼저 Root DNS서버에게 'www.knowre.com'의 ip 주소 질의
          안다면 해당 ip 주소를 Local DNS가 캐싱을 하고(추후 같은 요청에 대해 빠른 응답을 위함) PC에 ip 정보 전달, 모른다면 Local DNS 서버는 Root DNS 서버로부터 'knowre.com' 도메인 관리 DNS 서버 정보를 전달 받고 해당 서버에 'www.knowre.com'에 대한 ip 주소 질의
@@ -70,7 +70,7 @@
          traceroute google.com
          traceroute to google.com (216.58.200.78), 64 hops max, 52 byte packets
          1  192.168.0.1 (192.168.0.1)  2.582 ms  1.756 ms  1.767 ms
-         2  -  5.155 ms  4.315 ms  5.799 ms
+         2  -(집 근처)  5.155 ms  4.315 ms  5.799 ms
          3  10.203.187.213 (10.203.187.213)  5.883 ms  6.656 ms
          4  10.204.81.117 (10.204.81.117)  4.086 ms  4.323 ms  3.587 ms
          5  210.124.146.73 (210.124.146.73)  4.367 ms
@@ -176,6 +176,14 @@
                  172.253.64.172 : Located in City Mountain View [ California ]
 
 * Wireshark를 통해 `www.google.com` 으로 요청을 날렸을 떄 어떤 TCP 패킷이 오가는지 확인해 보세요
+      
+      ip.addr == 
+      tcp.port == 
+      udp.port == 53(DNS)
+      
+      ping google.com  --> 172.217.24.196: icmp_seq=113 ttl=53 time=43.241 ms 64 bytes from 172.217.24.19
+
+      <img width="1426" alt="Screen Shot 2021-01-15 at 2 14 10 PM" src="https://user-images.githubusercontent.com/62423408/104684297-14969800-573c-11eb-8175-bf2bab3da2ba.png">
 
   * TCP 패킷을 주고받는 과정은 어떻게 되나요?
 
