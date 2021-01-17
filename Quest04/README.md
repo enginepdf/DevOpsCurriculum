@@ -72,6 +72,13 @@
         sudo service nginx stop
         sudo vi /etc/nginx/nginx.conf
 
+        sudo nginx -t -c /etc/nginx/nginx.conf
+        sudo service nginx start
+        node app.js
+
+        /check1  // this is /check1
+        /check  // this is /process/check
+
 * 서버에 터미널 접속을 종료해도 서버가 뜰 수 있게 해 보세요.
 
         npm install -g pm2
