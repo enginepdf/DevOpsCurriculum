@@ -53,5 +53,25 @@
         node app.js   // port 3000 connected
 
 * 로컬 머신을 통해 띄운 웹서버의 3000번 포트에 접속해 보세요. AWS 콘솔에서 보안 그룹을 조정하려면 어떻게 해야 할까요?
+
+        해당 EC2 인스턴스의 보안 그룹 인바운드 규칙 설정
+        HTTP	TCP	80	0.0.0.0/0	 Allow all IPv4 traffic
+        HTTP	TCP	80	::/0	         Allow all IPv6 traffic
+        SSH	TCP	22	0.0.0.0/0
+
+        :3000/process/check  // this is /process/check
+        :3000/check1  // this is /check1
+
 * 서버의 앞쪽에 nginx를 설치하여 80포트를 통해 외부로 서비스 해 보세요.
+
+        sudo amazon-linux-extras install nginx1
+        sudo service nginx start
+        sudo service nginx status
+        ps -ef | grep nginx
+        sudo netstat -ntlp
+
 * 서버에 터미널 접속을 종료해도 서버가 뜰 수 있게 해 보세요.
+
+        npm install -g pm2
+        pm2 start app.js
+        pm2 stop 0

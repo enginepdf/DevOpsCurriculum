@@ -253,6 +253,8 @@
          ip.addr == 
          tcp.port == 
          udp.port == 53(DNS)
+         tcp
+         http
       
       ping google.com  --> 172.217.24.196: icmp_seq=113 ttl=53 time=43.241 ms 64 bytes from 172.217.24.19
       ip.addr == 172.217.24.196
