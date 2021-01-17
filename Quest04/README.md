@@ -69,6 +69,8 @@
         sudo service nginx status
         ps -ef | grep nginx
         sudo netstat -ntlp
+        sudo service nginx stop
+        sudo vi /etc/nginx/nginx.conf
 
 * 서버에 터미널 접속을 종료해도 서버가 뜰 수 있게 해 보세요.
 
