@@ -47,86 +47,92 @@
 
             계층 7 : 응용 계층(Application Layer) - DATA(메시지)
 
-               Message format, Human-Machine Interfaces
-               프로토콜 : DHCP, DNS, FTP, HTTP, Telnet
-               최종 목적지로 애플리케이션마다 서비스 제공 방법 규정
-               일반적 응용 서비스는 관련된 응용 프로세스들의 사이의 전환 제공
-               사용자 인터페이스, 전자우편, 데이터베이스 관리 등의 서비스 제공
+            Message format, Human-Machine Interfaces
+            프로토콜 : DHCP, DNS, FTP, HTTP, Telnet, SSH
+            최종 목적지로 애플리케이션마다 서비스 제공 방법 규정
+            일반적 응용 서비스는 관련된 응용 프로세스들의 사이의 전환 제공
+            사용자 인터페이스, 전자우편, 데이터베이스 관리 등의 서비스 제공
          
             계층 6 : 표현 계층(Presentation Layer) - DATA
 
-               Coding into 1s and 0s; encryption, compression
-               프로토콜 : JPG, MPEG, SMB, AFP
-               코드 간의 번역 담당. 사용자 시스템에서 데이터의 형식 상 차이를 다루는 부담을 응용 계층으로부터 덜어 줌
-               압축(전송할 비트 수의 감소를 위해 압축 알고리즘 사용), MIME 인코딩, 암호화 등의 동작이 이루어짐(받은 데이터를 표준방식으로 변환)
-               (파일 인코딩, 명령어를 포장, 압축, 암호화)
-               데이터 표현에 대한 독립성 제공
+            Coding into 1s and 0s; encryption, compression
+            프로토콜 : JPG, MPEG, SMB, AFP
+            코드 간의 번역 담당. 사용자 시스템에서 데이터의 형식 상 차이를 다루는 부담을 응용 계층으로부터 덜어 줌
+            압축(전송할 비트 수의 감소를 위해 압축 알고리즘 사용), MIME 인코딩, 암호화 등의 동작이 이루어짐(받은 데이터를 표준방식으로 변환)
+            (파일 인코딩, 명령어를 포장, 압축, 암호화)
+            데이터 표현에 대한 독립성 제공
 
             계층 5 : 세션 계층(Session Layer) - DATA
 
-               Authentication, permissions, session restoration
-               프로토콜 : NetBIOS, SSH, TLS
-               Port 번호 기반 연결
-               양 끝단의 응용 프로세스가 통신을 관리하기 위한 방법 제공
-               동시 송수신 방식(duplex), 반이중 방식(half-duplex), 전이중 방식(full duplex)의 통신과 함께, 체크 포인팅과 유휴, 종료, 다시 시작 과정 등을 수행. TCP/IP 세션을 만들고 없애는 책임을 짐
-               통신하는 사용자들을 동기화하고 오류 복구 명령들을 일괄적으로 다룸
-               체크 포인팅, 유휴, 종료, 다시 시작 과정 등 수행
-               응용 간 논리적 연결 확립
-               TCP/IP 세션을 만들고 없앰
-               세션 구별번호의 추가
+            Authentication, permissions, session restoration
+            프로토콜 : NetBIOS, SSL(Secure Socket Layer), TLS(Transport Layer Secure)
+            양 끝단의 응용 프로세스가 통신을 관리하기 위한 방법 제공(네트워크를 이용하여 통신하는 두 프로세스 간의 논리적 연결)
+            동시 송수신 방식(duplex), 반이중 방식(half-duplex), 전이중 방식(full duplex)의 통신과 함께, 체크 포인팅과 유휴, 종료, 다시 시작 과정 등을 수행. TCP/IP 세션을 만들고 없애는 책임을 짐
+            통신하는 사용자들을 동기화하고 오류 복구 명령들을 일괄적으로 다룸
+            체크 포인팅, 유휴, 종료, 다시 시작 과정 등 수행
+            응용 간 논리적 연결 확립
+            TCP/IP 세션을 만들고 없앰
+            세션 구별번호의 추가
       
             계층 4 : 전송 계층(Transport Layer) - Segment(캡슐화), (TCP(DATA))
 
-               End-to-end error control
-               PDU : Segment(헤더에 포함)
-               프로토콜 : TCP, UDP, ARP, RTP 
-               장비 : 게이트웨이, L4 스위치
-               양 끝단의 사용자들이 신뢰성 있는 데이터를 주고 받을 수 있도록 해주어, 상위 계층들이 데이터 전달의 유효성이나 효율성 생각하지 않도록 해줌
-               패킷들의 전송이 유효한지 확인하고 전송 실패한 패킷들을 다시 전송(오류 검출 및 복구와 흐름 제어)
-               일부 프로토콜은 상태 개념 있고(stateful), 연결 기반(connection oriented)
-               패킷 순서번호의 추가, 주소 설정, 오류 및 흐름 제어,  다중화
-               TCP, UDP 프로토콜을 통해 통신 활성화. 포트를 열어두고, 프로그램들이 전송 할 수 있도록 제공
-               TCP(신뢰성, 연결 지향적), UDP(비신뢰성, 비연결성, 실시간)
+            End-to-end error control
+            PDU : Segment(헤더에 포함)
+            프로토콜 : TCP, UDP, ARP, RTP 
+            장비 : 게이트웨이, L4 스위치
+            양 끝단의 사용자들이 신뢰성 있는 데이터를 주고 받을 수 있도록 해주어, 상위 계층들이 데이터 전달의 유효성이나 효율성 생각하지 않도록 해줌
+            패킷들의 전송이 유효한지 확인하고 전송 실패한 패킷들을 다시 전송(오류 검출 및 복구와 흐름 제어)
+            일부 프로토콜은 상태 개념 있고(stateful), 연결 기반(connection oriented)
+            패킷 순서번호의 추가, 주소 설정, 오류 및 흐름 제어,  다중화
+            TCP, UDP 프로토콜을 통해 통신 활성화. 포트를 열어두고, 프로그램들이 전송 할 수 있도록 제공
+            TCP(신뢰성, 연결 지향적), UDP(비신뢰성, 비연결성, 실시간)
+
+            Port(0~65535) - 어떤 프로그램으로 가야할지 지정
 
             계층 3 : 네트워크 계층(Network Layer) - Packet(데이터그램)(캡슐화), IP((TCP(DATA)))
 
-               Network addressing; routing or switching
-               PDU : Packet(전송 데이터는 패킷 단위로 분할하여 전송 후 다시 합쳐짐)
-               프로토콜 : IP, ICMP
-               장비 : 라우터, L3 스위치
-               여러 개의 노드 거칠 때마다 경로 찾아주는 역할, 송신 노드에서 수신 노드로 어떤 경로를 정보를 전달할 것인지 결정. 최적 경로 설정
-               (전송 계층이 요구하는 서비스 품질(QoS) 제공 위한 기능적, 절차적 수단 제공)
-               라우터를 통해 이동할 경로를 선택하여 네트워크 관리자가 IP 주소 할당, 해당 경로에 따라 패킷 전달
-               데이터를 다른 네트워크를 통해 전달함으로써 인터넷이 가능하게 만드는 계층
-               송수신 주소, 가상 회선 번호 추가
-               라우팅, 흐름 제어, segmentation/desegmentation, 오류 제어, internetworking 등 수행
-               * 데이터그램 : 패킷 교환에서 각각 독립적으로 취급되는 패킷. 헤더와 데이터 부분으로 구성
+            Network addressing; routing or switching
+            PDU : Packet(전송 데이터는 패킷 단위로 분할하여 전송 후 다시 합쳐짐)
+            프로토콜 : IP(TCP/IP 망에서 원하는 목적지까지 데이터 전달 위해 만들어진 표준), ICMP
+            장비 : 라우터, L3 스위치
+            여러 개의 노드 거칠 때마다 경로 찾아주는 역할, 송신 노드에서 수신 노드로 어떤 경로를 정보를 전달할 것인지 결정. 최적 경로 설정
+            (전송 계층이 요구하는 서비스 품질(QoS) 제공 위한 기능적, 절차적 수단 제공)
+            라우터를 통해 이동할 경로를 선택하여 네트워크 관리자가 IP 주소 할당, 해당 경로에 따라 패킷 전달
+            데이터를 다른 네트워크를 통해 전달함으로써 인터넷이 가능하게 만드는 계층
+            송수신 주소, 가상 회선 번호 추가
+            라우팅, 흐름 제어, segmentation/desegmentation, 오류 제어, internetworking 등 수행
+            * 데이터그램 : 패킷 교환에서 각각 독립적으로 취급되는 패킷. 헤더와 데이터 부분으로 구성
 
             계층 2 : 데이터 링크 계층(Data Link Layer) - Frame(캡슐화), Ethernet(IP((TCP(DATA))))
 
-               Error detection, flow control on physical link
-               PDU : Frame(시스템 간 오류 없는 데이터 전송을 위해 팻킷을 프레임으로 구성), 3계층에서 정보를 받아 주소와 제어정보를 헤더와 테일에 추가, 노드 대 노드 전달 감독
-               프로토콜 : 이더넷, MAC, PPP, ATM, LAN, Wifi
-               장비 : 브릿지, 스위치
-               네트워크 위의 개체들(인접 기기) 간 데이터 전달.
-               물리 계층에서 발생할 수 있는 오류 찾고 수정하는 데 필요한 기능적, 절차적 수단 제공(CRC(Cyclic Reduncdancy Check) 기반의 오류 제어와 흐름 제어 필요)
-               MAC 주소를 이용해 통신(주소값을 물리적으로 할당)
-               프레임 순서번호의 추가
-               Frame에 MAC 주소를 부여하고 에러 검출, 재전송, 흐름 제어 진행
+            Error detection, flow control on physical link
+            PDU : Frame(시스템 간 오류 없는 데이터 전송을 위해 팻킷을 프레임으로 구성), 3계층에서 정보를 받아 주소와 제어정보를 헤더와 테일에 추가, 노드 대 노드 전달 감독
+            프로토콜 : 이더넷, MAC, PPP, ATM, LAN, Wifi
+            장비 : 브릿지, 스위치
+            네트워크 위의 개체들(인접 기기) 간 데이터 전달.
+            물리 계층에서 발생할 수 있는 오류 찾고 수정하는 데 필요한 기능적, 절차적 수단 제공(CRC(Cyclic Reduncdancy Check) 기반의 오류 제어와 흐름 제어 필요)
+            MAC 주소를 이용해 통신(주소값을 물리적으로 할당)
+            프레임 순서번호의 추가
+            Frame에 MAC 주소를 부여하고 에러 검출, 재전송, 흐름 제어 진행
+            
+            스위치(flooding, learning, forwarding, aging, filtering)
+            ARP(Address Resolution Protocol) : IP 주소를 MAC 주소로 변환
+            RARP(Reverse Address Resolution Protocol) : MAC 주소를 IP 주소로 변환
+
 
             계층 1 : 물리 계층(Physical Layer) - Bit(캡슐화)
 
-               Bit stream: physical medium, method of representing bits
-               PDU : 비트(bit)
-               프로토콜 : Modem, Cable, Fiber, RS-232C
-               장비 : 허브, 리피터
-               실제 장치 연결 위한 전기적, 물리적 세부 사항 정의
-               통신 케이블로 데이터 전송하는 역할(디지털 비트를 전기, 무선 또는 광신호로 변환)
-               핀들의 배치, 전압, 전선의 명세
-               허브나 리피터가 물리 계층의 장치
-               물리적 정보 전달 매개체에 대한 연결의 성립 및 종료. 여러 사용자들 간의 통신 자원을 효율적 분배하는 데 관여
-               물리 계층에서 데이터 교환하는 방식은 회선 교환, 메시지 교환, 패킷 교환 방식
-               에러 제어 비트 추가
+            Bit stream: physical medium, method of representing bits
+            PDU : 비트(bit)
+            프로토콜 : Modem, Cable, Fiber, RS-232C
+            장비 : 허브, 리피터, 케이블
+            실제 장치 연결 위한 전기적, 물리적 세부 사항 정의
+            통신 케이블로 데이터 전송하는 역할(디지털 비트를 전기, 무선 또는 광신호로 변환)
+            핀들의 배치, 전압, 전선의 명세
+            허브나 리피터가 물리 계층의 장치
+            물리적 정보 전달 매개체에 대한 연결의 성립 및 종료. 여러 사용자들 간의 통신 자원을 효율적 분배하는 데 관여
+            물리 계층에서 데이터 교환하는 방식은 회선 교환, 메시지 교환, 패킷 교환 방식
+            에러 제어 비트 추가
             
 * 우리가 브라우저의 주소 창에 `www.knowre.com` 을 쳤을 때, 어떤 과정을 통해 노리의 서버 주소를 알게 되나요?
 
