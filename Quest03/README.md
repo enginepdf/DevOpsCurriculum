@@ -259,7 +259,6 @@
       ping google.com  --> 172.217.24.196: icmp_seq=113 ttl=53 time=43.241 ms 64 bytes from 172.217.24.19
       ip.addr == 172.217.24.196
       
-<img width="1426" alt="Screen Shot 2021-01-15 at 2 14 10 PM" src="https://user-images.githubusercontent.com/62423408/104684297-14969800-573c-11eb-8175-bf2bab3da2ba.png">
 
   * TCP 패킷을 주고받는 과정은 어떻게 되나요?
 
