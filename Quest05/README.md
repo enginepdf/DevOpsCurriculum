@@ -22,7 +22,7 @@
 
       https://github.com/enginepdf/Quest05
 
-* Quest 04에서 vi로 입력한 웹 서비스 대신 github의 저장소를 clone하여 같은 일을 하는 서버를 띄워 보세요.
+* Quest 04에서 vi로 입력한 웹 서비스 대신 github의 저장소를 clone하여 같은 일을 하는 서버를 띄워 보세요.(O)
 
       sudo yum install git
       git clone https://github.com/enginepdf/Quest05
