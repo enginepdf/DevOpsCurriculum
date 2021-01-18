@@ -24,4 +24,16 @@
 
 * Quest 04에서 vi로 입력한 웹 서비스 대신 github의 저장소를 clone하여 같은 일을 하는 서버를 띄워 보세요.
 
+    sudo yum install git
+    git clone https://github.com/enginepdf/Quest05
+    cd Quest05
+    npm install
+    sudo service nginx start
+    node app.js  // port 3000 connected
+
+    /check    // this is /process/check
+    /check1   // this is /check1
+
+    // sudo service nginx stop
+
 * 리포지토리에 민감한 정보(개인정보, 패스워드 등)가 들어가지 않도록 주의합니다.(O)
