@@ -264,8 +264,29 @@
       
       ping google.com  --> 172.217.24.196: icmp_seq=113 ttl=53 time=43.241 ms 64 bytes from 172.217.24.19
       ip.addr == 172.217.24.196
-      
 
+      - Transmission Control Protocol(TCP)
+
+                  Source Port : 출발지의 프로세스가 포트 번호로 나타남(포트 번호로 애플리케이션 지정)
+                  Destination Port : 목적지의 프로세스가 포트 번호로 나타남
+                  Stream index : 와이어샤크에서 TCP 연결을 추적하거나 분석하기 쉽게 하기 위해 TCP 연결 시작부터 종료까지를 하나의 TCP 스트림으로 해서 패킷에 등장한 순번으로 스트림 번호 붙여 분석
+                  Sequence Number : 현재 송신하고 있는 TCP 세그먼트의 위치가 숫자로 나타남
+                  Next Sequence Number : 현재 시퀀스 번호에 송신할 TCP 데이터 크기를 더한 값이 다음 시퀀스 번호가 됨
+                  Acknowledgement Number : 확인 응답 번호. 수신한 TCP 세그먼트의 위치가 번호로 표시(연결 시 초기 시퀀스 번호+1, 수신 세그먼트의 바이트 수가 더해져 감) 
+                  Header length : TCP 헤더의 크기. 가변 길이지만 기본값 20바이트
+                  Flags : 통신 제어
+
+                     Reserved
+                     Nonce : ECN-Echo와 함께 패킷 혼잡 제어
+                     Congestion WIndow Reduced : 네트워크 혼잡 시 한 번에 보내는 데이터 크기 작게 함
+                     Urgent : 긴급 포인터 플래그. 긴급 데이터 사용 시
+                     Acknowledgement : ACK 플래그. On이 되면 확인 응답 번호 유효화
+                     Push : PSH 플래그. On이 되면 그때까지 수신 버퍼에 쌓인 데이터를 모아 프로그램에 넘기는 푸시 기능이 유효화(효율이 좋은 통신을 위함)
+                     
+                  Window Size: RWIN이라고도 함. 연속해서 TCP 패킷 수신 위한 수신 버퍼
+                  Checksum : TCP 헤더와 세그먼트의 내용 체크
+                  SEQ/ACK analysis : 전문가 기능 등에 의해 와이어샤크가 추가한 헤더는 []에 표시
+      
   * TCP 패킷을 주고받는 과정은 어떻게 되나요?
 
   * 각각의 패킷의 헤더에 어떤 정보들이 담겨 있나요?
