@@ -262,32 +262,66 @@
          tcp
          http
       
+      (1)
       ping google.com  --> 172.217.24.196: icmp_seq=113 ttl=53 time=43.241 ms 64 bytes from 172.217.24.19
-      ip.addr == 172.217.24.196
+      ip.addr == 172.217.24.196 
 
-      - Transmission Control Protocol(TCP)
+      (2)
+      telnet google.com 80
+      GET / HTTP/1.0
+      http(filter)  --> Frame, Ethernet 2, IPv4, TCP, [36 Reassembled TCP Segments (50129 bytes): ...], HTTP, Line-based text data : text/html
 
-                  Source Port : 출발지의 프로세스가 포트 번호로 나타남(포트 번호로 애플리케이션 지정)
-                  Destination Port : 목적지의 프로세스가 포트 번호로 나타남
-                  Stream index : 와이어샤크에서 TCP 연결을 추적하거나 분석하기 쉽게 하기 위해 TCP 연결 시작부터 종료까지를 하나의 TCP 스트림으로 해서 패킷에 등장한 순번으로 스트림 번호 붙여 분석
-                  Sequence Number : 현재 송신하고 있는 TCP 세그먼트의 위치가 숫자로 나타남
-                  Next Sequence Number : 현재 시퀀스 번호에 송신할 TCP 데이터 크기를 더한 값이 다음 시퀀스 번호가 됨
-                  Acknowledgement Number : 확인 응답 번호. 수신한 TCP 세그먼트의 위치가 번호로 표시(연결 시 초기 시퀀스 번호+1, 수신 세그먼트의 바이트 수가 더해져 감) 
-                  Header length : TCP 헤더의 크기. 가변 길이지만 기본값 20바이트
-                  Flags : 통신 제어
+      Frame 128: 565 bytes on wire (4520 bits), 565 bytes captured (4520 bits) on interface en0, id 0
+      Ethernet II, Src: EFMNetwo_a5:a6:74 (90:9f:33:a5:a6:74), Dst: -
+      Internet Protocol Version 4, Src: 172.217.24.206, Dst: 192.168.0.3
+      Transmission Control Protocol, Src Port: 80, Dst Port: 52787, Seq: 49631, Ack: 23, Len: 499
+      Source Port: 80
+      Destination Port: 52787
+      [Stream index: 1]
+      [TCP Segment Len: 499]
+      Sequence Number: 49631    (relative sequence number)
+      Sequence Number (raw): 707283347
+      [Next Sequence Number: 50131    (relative sequence number)]
+      Acknowledgment Number: 23    (relative ack number)
+      Acknowledgment number (raw): 2742158257
+      1000 .... = Header Length: 32 bytes (8)
+      Flags: 0x019 (FIN, PSH, ACK)
+      Window: 256
+      [Calculated window size: 256]
+      [Window size scaling factor: -1 (unknown)]
+      Checksum: 0x40de [unverified]
+      [Checksum Status: Unverified]
+      Urgent Pointer: 0
+      Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+        TCP Option - No-Operation (NOP)
+            Kind: No-Operation (1)
+        TCP Option - No-Operation (NOP)
+            Kind: No-Operation (1)
+        TCP Option - Timestamps: TSval 4013772369, TSecr 734795501
+      [SEQ/ACK analysis]
+      [Timestamps]
+      [36 Reassembled TCP Segments (50129 bytes): #63(1418), #64(1418), #65(1418), #68(1418), #69(1418), #70(1418), #73(1418), #74(1418), #75(1418), #76(1418), #79(1418), #80(1418), #83(1418), #84(1418), #87(1418), #88(1418), #91(1418), #92(1418)]
+      Hypertext Transfer Protocol
+      Line-based text data: text/html (85 lines)
 
-                     Reserved
-                     Nonce : ECN-Echo와 함께 패킷 혼잡 제어
-                     Congestion WIndow Reduced : 네트워크 혼잡 시 한 번에 보내는 데이터 크기 작게 함
-                     Urgent : 긴급 포인터 플래그. 긴급 데이터 사용 시
-                     Acknowledgement : ACK 플래그. On이 되면 확인 응답 번호 유효화
-                     Push : PSH 플래그. On이 되면 그때까지 수신 버퍼에 쌓인 데이터를 모아 프로그램에 넘기는 푸시 기능이 유효화(효율이 좋은 통신을 위함)
-                     
-                  Window Size: RWIN이라고도 함. 연속해서 TCP 패킷 수신 위한 수신 버퍼
-                  Checksum : TCP 헤더와 세그먼트의 내용 체크
-                  SEQ/ACK analysis : 전문가 기능 등에 의해 와이어샤크가 추가한 헤더는 []에 표시
       
   * TCP 패킷을 주고받는 과정은 어떻게 되나요?
+
+             (1) 3-Way Handshake
+
+                  클라이언트는 SYN(a) 패킷을 보내고, 응답을 기다리는 SYN_SENT 상태
+                  서버는 요청 수락 의미로 SYN(b)와 ACK(a+1)이 담긴 패킷을 보냄. SYN_RECEIVED 상태가 됨
+                  클라이언트는 서버로부터 SYN(b)와 ACK(a+1) 패킷을 받고, ACK(b+1)를 서버로 보내면 연결 성립되어 두 호스트는 ESTABLISHED 상태가 됨
+
+             (2) 필요한 데이터 주고 받음
+
+             (3) 4-Way Handshake
+
+                  클라이언트는 연결을 종료하겠다는 FIN 플래그 보냄
+                  서버는 확인 메시지로 ACK 보내고, 자신의 데이터를 모두 보낼 때까지 CLOSE_WAIT 상태
+                  서버가 데이터를 모두 보내고 통신이 끝났으면 연결이 종료 되었다고 클라이언트에게 FIN 플래그 전송
+                  클라이언트는 FIN 메시지를 확인했다는 메시지(ACK) 보내고 연결 종료
+
 
   * 각각의 패킷의 헤더에 어떤 정보들이 담겨 있나요?
 
