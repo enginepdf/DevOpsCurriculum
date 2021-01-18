@@ -272,19 +272,66 @@
 
               - Frame
 
-                  Interface id, Encapsulation type, Arrival Time, Epoch Time, Fame Number, Frame Length, Capture Length
+                  Interface id : 패킷을 캡쳐한 인터페이스 번호
+                  Encapsulation type : 패킷의 캡슐화 종류
+                  Arrival Time : 패킷을 캡쳐한 시간
+                  Epoch Time : 유닉스 시간 형식의 시리얼 값(1970년 1월 1일 0시 0분 기준으로한 초 수)
+                  Time delta from previous captured frame : 직전에 캡쳐된 프레임으로부터의 간격으로 '초'로 표시
+                  Time delta from previous displayed frame : 직전에 표시된 프레임으로부터의 간격을 '초'로 표시
+                  Frame Number : 최초 캡쳐 패킷 번호 '1', 그 뒤에 캡쳐 패킷 번호가 순서대로 나타남
+                  Capture Length : 패킷 크기
+                  Frame is marked : 와이어샤크에 의해 해당 프레임이 마크되었는지 여부
+                  Frame is ignored : 와이어샤크에 의해 해당 프레임이 무시되었는지 여부
+                  Protocols in frame : 패킷에 포함되어 있는 헤더
+                  Numbers of per-protocol-data : 프로토콜별 포함된 데이터 갯수
+                  Coloring Rule Name : 와이어샤크 컬러링에 사용된 규칙 이름
+                  Coloring Rule String : 와이어샤크 컬러링에 사용된 규칙의 표시 필터
                
               - Ethernet 2
 
-                  Destination, Source, Type
+                  Destination : 목적지 랜카드. 랜카드마다 미리 부여되어 있는 MAC 주소 이용
+                  Source : 출발지 랜카드가 MAC 주소로 표시
+                  Type : Ether 타입, Ethernet2 뒤에 이어지는 헤더 형식 지정. IP(0x0800)의 경우 IP 헤더가 다음에 이어진다는 것 의미
 
               - Internet Protocol Version 4(IPv4)
 
-                  Differentiated Services Field, Total Length, Identification, Flags, Fragment Offset, Time to Live, Protocol, Header Checksum, Source Address, Destination Address
+                  Version : IP 버전
+                  Header Length : 일반적으로 20바이트, IP 헤더 길이 가변적
+                  Differentiated Services Field : 패킷의 중요도
+                  Total Length : 패킷 전체 길이
+                  Identification : 패킷 식별 정보
+                  Flags : 패킷 작게 분할 위해 사용. Reserved bit, Don't Fragment(DF 비트), More Fragment(MF 비트)
+                  Fragment Offset : 분할된 패킷 내에서 현재 패킷의 위치가 바이트로 표시
+                  Time to Live : 패킷의 수명. 패킷이 라우터를 지나가면서 네트워크로 송신될 때 값이 1씩 감소하는 구조. 이 값이 0이 되면 라우터나 계층3의 스위치에서 패킷이 없어짐
+                  Protocol : 프로토콜 필드. IP 다음에 이어질 헤더 형식
+                  Header Checksum : IP 헤더의 내용을 계산식에 넣어 산출한 값과 헤더 체크섬 값을 비교해서 패킷의 IP  헤더가 깨지거나 잘못되지 않았는지 확인
+                  Source Address : 출발지 컴퓨터의 IP 주소
+                  Destination Address : 목적지 컴퓨터의 IP 주소
+                  Source GeoIP : 출발지 IP 주소로부터 GeoIP 데이터베이스 참조해서 IP 주소가 연결된 위치 나타냄
+                  Destination GeoIP : 목적지 IP 주소로부터 GeoIP 데이터베이스 참조해서 IP 주소가 연결된 위치 나타냄
 
               - Transmission Control Protocol(TCP)
 
-                  Source Port, Destination Port, Sequence Number, Acknowledgement Number, Flags, Options, SEQ/ACK analysis, Timestamps
+                  Source Port : 출발지의 프로세스가 포트 번호로 나타남(포트 번호로 애플리케이션 지정)
+                  Destination Port : 목적지의 프로세스가 포트 번호로 나타남
+                  Stream index : 와이어샤크에서 TCP 연결을 추적하거나 분석하기 쉽게 하기 위해 TCP 연결 시작부터 종료까지를 하나의 TCP 스트림으로 해서 패킷에 등장한 순번으로 스트림 번호 붙여 분석
+                  Sequence Number : 현재 송신하고 있는 TCP 세그먼트의 위치가 숫자로 나타남
+                  Next Sequence Number : 현재 시퀀스 번호에 송신할 TCP 데이터 크기를 더한 값이 다음 시퀀스 번호가 됨
+                  Acknowledgement Number : 확인 응답 번호. 수신한 TCP 세그먼트의 위치가 번호로 표시(연결 시 초기 시퀀스 번호+1, 수신 세그먼트의 바이트 수가 더해져 감) 
+                  Header length : TCP 헤더의 크기. 가변 길이지만 기본값 20바이트
+                  Flags : 통신 제어
+
+                     Reserved
+                     Nonce : ECN-Echo와 함께 패킷 혼잡 제어
+                     Congestion WIndow Reduced : 네트워크 혼잡 시 한 번에 보내는 데이터 크기 작게 함
+                     Urgent : 긴급 포인터 플래그. 긴급 데이터 사용 시
+                     Acknowledgement : ACK 플래그. On이 되면 확인 응답 번호 유효화
+                     Push : PSH 플래그. On이 되면 그때까지 수신 버퍼에 쌓인 데이터를 모아 프로그램에 넘기는 푸시 기능이 유효화(효율이 좋은 통신을 위함)
+                     
+                  Window Size: RWIN이라고도 함. 연속해서 TCP 패킷 수신 위한 수신 버퍼
+                  Checksum : TCP 헤더와 세그먼트의 내용 체크
+                  SEQ/ACK analysis : 전문가 기능 등에 의해 와이어샤크가 추가한 헤더는 []에 표시
+
 
 
 * telnet 명령을 통해 `http://www.google.com/` URL에 HTTP 요청을 날려 보세요.
