@@ -32,26 +32,33 @@
 
             클라이언트가 파일들의 마지막 스냅샷을 가져오는 대신, 저장소를 통째로 복사. 
             클라이언트 상에 아무 것도 없을 때 서버의 프로젝트를 내려받는 명령어
+            git clone <repository URL>
 
         - git add 
 
             working directory(작업 디렉토리) 상의 변경 내용을 staging area(스테이징 영역)에 추가하기 위해 사용하는 명령어
+            git add <directory to add>
 
         - git commit 
 
             변경 내용의 확정(Head - 로컬 저장소 에 반영)
+            git commit -m 'Message'
+            git commit -a  // git add and git commit
 
         - git push
 
             원격 저장소에 commit 저장
+            git push origin main
 
         - git pull
 
             다른 사람이 Pull Request를 통해 코드 업데이트 했거나, Github를 통해 commit 했을 때 그 내용을 클라이언트로 내려받는 명령어
+            git pull origin main
 
         - git branch
 
             독립적으로 작업하기 위한 영역
+            git branch <branch name>
 
         - git stash
 
