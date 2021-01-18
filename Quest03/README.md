@@ -270,6 +270,23 @@
 
   * 각각의 패킷의 헤더에 어떤 정보들이 담겨 있나요?
 
+              - Frame
+
+                  Interface id, Encapsulation type, Arrival Time, Epoch Time, Fame Number, Frame Length, Capture Length
+               
+              - Ethernet 2
+
+                  Destination, Source, Type
+
+              - Internet Protocol Version 4(IPv4)
+
+                  Differentiated Services Field, Total Length, Identification, Flags, Fragment Offset, Time to Live, Protocol, Header Checksum, Source Address, Destination Address
+
+              - Transmission Control Protocol(TCP)
+
+                  Source Port, Destination Port, Sequence Number, Acknowledgement Number, Flags, Options, SEQ/ACK analysis, Timestamps
+
+
 * telnet 명령을 통해 `http://www.google.com/` URL에 HTTP 요청을 날려 보세요.
     
         telnet google.com 80
