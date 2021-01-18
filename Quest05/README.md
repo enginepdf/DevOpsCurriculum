@@ -70,7 +70,7 @@
 
             git stash apply // 작업 가져오기
 
-            git stash apply --index // Staged 상태가지 복원
+            git stash apply --index // Staged 상태까지 복원
 
             git stash drop [stash name] // 스택에 남아 있는 stash를 제거
 
