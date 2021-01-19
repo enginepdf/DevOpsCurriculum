@@ -139,13 +139,13 @@
          웹 브라우저에 'www.knowre.com' 입력 
          Local DNS에 'www.knowre.com'이라는 host name에 대한 ip 주소 물어봄
          ip 주소 알고 있다면 Local DNS에서 요청 pc에 ip 주소 리턴, 아니라면 Local DNS는 다른 DNS 서버들과 통신(DNS 메시지) 시작. 먼저 Root DNS서버에게 'www.knowre.com'의 ip 주소 질의
-         안다면 해당 ip 주소를 Local DNS가 캐싱을 하고(추후 같은 요청에 대해 빠른 응답을 위함) PC에 ip 정보 전달, 모른다면 Local DNS 서버는 Root DNS 서버로부터 'knowre.com' 도메인 관리 DNS 서버 정보를 전달 받고 해당 서버에 'www.knowre.com'에 대한 ip 주소 질의
+         안다면 해당 ip 주소를 Local DNS가 캐싱을 하고(추후 같은 요청에 대해 빠른 응답을 위함) PC에 ip 정보 전달, 모른다면 Local DNS 서버는 Root DNS 서버로부터 'knowre.com' 도메인 관리 DNS 서버 정보를 전달 받고 해당 서버에 'www.knowre.com'에 대한 ip 주소 질의  // (Root DNS 서버의 역할)
          'knowre.com' 도메인 관리 DNS 서버가 Local DNS 서버로 'www.knowre.com'에 대한 ip 주소 정보를 보내고 이를 Local DNS는 캐싱을 함(추후 같은 요청에 빠른 응답을 위해) 그리고 PC에 전달
 
 ## Quest
 * tracert(Windows가 아닌 경우 traceroute) 명령을 통해 `www.google.com` 까지 가는 경로를 찾아 보세요.
 
-         traceroute google.com
+         traceroute google.com // traceroute 동작 원리 
          traceroute to google.com (216.58.200.78), 64 hops max, 52 byte packets
          1  192.168.0.1 (192.168.0.1)  2.582 ms  1.756 ms  1.767 ms
          2  -(집 근처)  5.155 ms  4.315 ms  5.799 ms
@@ -243,7 +243,7 @@
                  1.208.148.206 : Seoul
              11  74.125.118.154 : Located in City Mountain View [ California ]
                  72.14.215.29 : Located in City Mountain View [ California ]
-             12  10.23.215.30 : Seoul
+             12  10.23.215.30 : Seoul // 10. 에 대한 의미 찾기. 잘못된 이유, traceroute 원리
              13  72.14.239.94 : Located in City Mountain View [ California ]
                  108.170.233.0 : Located in City Mountain View [ California ]
                  108.170.241.97 : Located in City Mountain View [ California ]
@@ -255,7 +255,7 @@
 
 * Wireshark를 통해 `www.google.com` 으로 요청을 날렸을 떄 어떤 TCP 패킷이 오가는지 확인해 보세요
       
-      - filter
+      - filter 
          ip.addr == 
          tcp.port == 
          udp.port == 53(DNS)
@@ -266,7 +266,7 @@
       ping google.com  --> 172.217.24.196: icmp_seq=113 ttl=53 time=43.241 ms 64 bytes from 172.217.24.19
       ip.addr == 172.217.24.196 
 
-      (2)
+      (2) //  캐쉬
       telnet google.com 80
       GET / HTTP/1.0
       http(filter)  --> Frame, Ethernet 2, IPv4, TCP, [36 Reassembled TCP Segments (50129 bytes): ...], HTTP, Line-based text data : text/html
