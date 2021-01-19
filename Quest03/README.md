@@ -266,7 +266,7 @@
       ping google.com  --> 172.217.24.196: icmp_seq=113 ttl=53 time=43.241 ms 64 bytes from 172.217.24.19
       ip.addr == 172.217.24.196 
 
-      (2) //  캐쉬
+      (2) //  캐시
       telnet google.com 80
       GET / HTTP/1.0
       http(filter)  --> Frame, Ethernet 2, IPv4, TCP, [36 Reassembled TCP Segments (50129 bytes): ...], HTTP, Line-based text data : text/html
