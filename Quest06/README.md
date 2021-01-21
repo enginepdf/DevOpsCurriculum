@@ -28,7 +28,7 @@
 * 도커 컨테이너에서 런타임에 환경변수를 주입하려면 어떻게 해야 할까요?
 
         (1) Dockerfile에서 ENV <ENV name> <ENV value>
-        (2) sudo docker run -e <ENV name>=<ENV value>
+        (2) sudo docker run -e <ENV name>=<ENV value> -e <ENV name>=<ENV value> ...(-e <ENV name>=<ENV value>)
 
 * 도커 컨테이너의 stdout 로그를 보려면 어떻게 해야 할까요?
     
@@ -37,6 +37,7 @@
 * 실행중인 도커 컨테이너에 들어가 bash 등의 쉘을 실행하고 로그 등을 보려면 어떻게 해야 할까요?
 
         docker exec -ti <docker-image id> /bin/bash
+        docker run -ti bash -c <CMD>
 
 ## Quest
 * 도커를 설치하고 그 사용법을 익혀 보세요.(O)
