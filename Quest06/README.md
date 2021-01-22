@@ -63,15 +63,31 @@
         ps aux | grep docker
         docker run -d -p 3000:3000 --name quest05 quest05:1.0
         docker ps -a
-        docker stop quest05
-        docker restart quest05
+
+        /check   // this is /process/check
+        /check1  // this is /check1
+
+
+        // docker stop quest05
+        // docker restart quest05
 
 
 * 컨테이너를 Docker Hub에 올리고, EC2에서 해당 컨테이너를 띄워서 서비스 해 보세요.
 
+        sudo service nginx start
+        sudo service docker start
         docker login
-        docker build -t <image> .   // docker build <image> . 
+        docker build -t <Docker Hub ID>/<image>:<tag> .   // docker build <image> . 
         docker push <Docker ID>/<Image name>:<tag>
+        docker rmi <Docker ID>/<Image name>:<tag>
+        
+        docker pull <Docker ID>/<Image name>:<tag>
+        docker images
+        docker run -d -p 3000:3000 --name quest05 <Docker ID>/quest05:1.0
+        docker ps -a
+        /check   // this is /process/check
+        /check1  // this is /check1
+
 
 * docker-compose를 사용하여, 빌드와 서버 업/다운을 쉽게 할 수 있도록 고쳐 보세요.
 
