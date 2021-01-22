@@ -23,7 +23,7 @@
 * 도커 컨테이너에 호스트의 파일시스템이나 네트워크 포트를 연결하려면 어떻게 해야 할까요?
 
         (1) 파일 시스템 연결 : docker -v <Host system directory>:<container directory> <image>
-        (2) 네트워크 포트 연결 : docker run -d -p <Host Port>:<Container Port> <image>
+        (2) 네트워크 포트 연결 : docker run -d -p <Host Port>:<Container Port> <image>   // option -d for detached mode, background
 
 * 도커 컨테이너에서 런타임에 환경변수를 주입하려면 어떻게 해야 할까요?
 
@@ -38,6 +38,7 @@
 
         docker exec -ti <docker-image id> /bin/bash
         docker run -ti bash -c <CMD>
+        docker attach <container id or name>
 
 ## Quest
 * 도커를 설치하고 그 사용법을 익혀 보세요.(O)
@@ -53,8 +54,18 @@
 
 * Quest 05에서 작업한 서버를 컨테이너 기반으로 띄울 수 있게 수정해 보세요. (docker-compose는 사용하지 않습니다)
 
-
+        git clone https://github.com/enginepdf/Quest05  // docker build https://github.com/enginepdf/Quest05.git
+        cd Quest05
+        sudo service nginx start
+        sudo service docker start
+        docker build -t quest05:1.0 .
+        docker images     // docker rmi <image>:<tag>   to remove the image
         ps aux | grep docker
+        docker run -d -p 3000:3000 --name quest05 quest05:1.0
+        docker ps -a
+        docker stop quest05
+        docker restart quest05
+
 
 * 컨테이너를 Docker Hub에 올리고, EC2에서 해당 컨테이너를 띄워서 서비스 해 보세요.
 
