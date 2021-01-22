@@ -104,5 +104,10 @@
         /check  // this is /process/check
         /check1 // this is /check1
         
+        ^CGracefully stopping... (press Ctrl+C again to force)
+        Stopping quest05_quest05_1 ... done
+
+        docker images // quest05_quest05
         docker-compose ps
-        docker-compose down
+        docker-compose down  // Removing quest05_quest05_1 ... done
+                             // Removing network quest05_default
