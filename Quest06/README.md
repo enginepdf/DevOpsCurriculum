@@ -88,12 +88,21 @@
         /check   // this is /process/check
         /check1  // this is /check1
 
+        // docker stop quest05
+        // docker restart quest05
+
 
 * docker-compose를 사용하여, 빌드와 서버 업/다운을 쉽게 할 수 있도록 고쳐 보세요.
 
         sudo curl -L "https://github.com/docker/compose/releases/download/1.25.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         sudo chmod +x /usr/local/bin/docker-compose
         docker-compose --version
+        git fetch origin
+        git merge origin/main    // git pull origin main
+
         docker-compose up --build  
+        /check  // this is /process/check
+        /check1 // this is /check1
+        
         docker-compose ps
         docker-compose down
