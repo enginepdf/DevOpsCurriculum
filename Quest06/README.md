@@ -110,11 +110,11 @@
 
         sudo curl -L "https://github.com/docker/compose/releases/download/1.25.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         sudo chmod +x /usr/local/bin/docker-compose
-        docker-compose --version   // docker-compose build 따로 하는 법
+        docker-compose --version   // docker-compose build 따로 하는 법 --> docker-compose build; docker-compose up -d
         git fetch origin
         git merge origin/main    // git pull origin main
 
-        docker-compose up --build  
+        docker-compose up --build    // docker-compose build; docker-compose up -d    d for background
         /check  // this is /process/check
         /check1 // this is /check1
         
