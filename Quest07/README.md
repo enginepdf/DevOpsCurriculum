@@ -78,6 +78,10 @@
 
 * AWS의 여러 리전(서울, 도쿄 등)으로 로드밸런싱을 하는 것도 가능할까요?
 
+        AWS Global Accelerator를 사용하여 하나 이상의 AWS 리전에 있는 여러 로드 밸런서에 트래픽 분산(애플리케이션 상태, 네트워크 상태 및 사용자의 지리적 위치를 기반으로 트래픽을 전달하고 정적 애니 캐스트 IP 주소 세트 제공)
+        Device -> AWS Global Accelerator(AWS edge, Global static anycast two IPs) -> (Amazon global network up to 10 AWS regions) each Region(Network load balancer) -> Amazon EC2
+
+
 ## Quest
 * EC2 인스턴스를 한 대 더 늘리고, 앞단에 ELB를 사용하여 두 대를 로드밸런싱 해 보세요. 직전 퀘스트에서 만들었던 컨테이너를 이용하시면 됩니다.
 
