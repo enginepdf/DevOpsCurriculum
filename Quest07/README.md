@@ -9,15 +9,15 @@
 * https://aws.amazon.com/ko/elasticloadbalancing
 * `로드밸런서`와 `리스너`, 그리고 `대상그룹`와 `상태 검사`
 
-    로드밸런서 : 부하 분산을 위해 가상 IP를 통해 여러 서버에 접속하도록 분해하는 기능
-        하드웨어일 수도 소프트웨어일 수도 있음.
-        Round Robin, Least Connecion, Weighted Least Connection, Fastedst Response Time, Adaptive, Hash(특정 클라이언트는 특정 서버로만 할당. 경로 보장. 접속자 수 많을수록 분산 및 효율 뛰어남. 접속자 수 적을수록 비효율적 분산)
-        -> 보통 Least Connection 후 동등한 수의 Connection일 때 Round Robin
+        로드밸런서 : 부하 분산을 위해 가상 IP를 통해 여러 서버에 접속하도록 분해하는 기능
+            하드웨어일 수도 소프트웨어일 수도 있음.
+            Round Robin, Least Connection, Weighted Least Connection, Fastest Response Time, Adaptive, Hash(특정 클라이언트는 특정 서버로만 할당. 경로 보장. 접속자 수 많을수록 분산 및 효율 뛰어남. 접속자 수 적을수록 비효율적 분산)
+            -> 보통 Least Connection 후 동등한 수의 Connection일 때 Round Robin
 
-    Target group(대상 그룹) : EC2 인스턴스를 오토 스케일링 할 수 있는 단위. 정의된 상태 검사 수행
-                            하나의 ELS에 여러 대상 그룹 연결 가능. 요청 포트에 따라 다른 대상 그룹으로 요청 전달 가능
-    상태 검사(Health check) : 대상 그룹에 원하는 경로와 포트를 설정하여 정상적으로 원하는 HTTP 응답이 오는지 확인. 정상적으로 응답이 오지 않는 인스턴스가 있다면 비정상 상태의 인스턴스를 제외한 다른 인스턴스로만 트래픽 분산
-    리스너 : 구성한 프로토콜 및 포트를 사용하여 연결 요청을 확인하는 프로세스
+        Target group(대상 그룹) : EC2 인스턴스를 오토 스케일링 할 수 있는 단위. 정의된 상태 검사 수행
+                                하나의 ELB에 여러 대상 그룹 연결 가능. 요청 포트에 따라 다른 대상 그룹으로 요청 전달 가능
+        상태 검사(Health check) : 대상 그룹에 원하는 경로와 포트를 설정하여 정상적으로 원하는 HTTP 응답이 오는지 확인. 정상적으로 응답이 오지 않는 인스턴스가 있다면 비정상 상태의 인스턴스를 제외한 다른 인스턴스로만 트래픽 분산
+        리스너 : 구성한 프로토콜 및 포트를 사용하여 연결 요청을 확인하는 프로세스
 
 ## Checklist
 * 여러 대의 서버로 서비스할 때의 장점은 무엇일까요? 또 주의해야 할 점은 무엇일까요?
@@ -79,6 +79,7 @@
 * AWS의 여러 리전(서울, 도쿄 등)으로 로드밸런싱을 하는 것도 가능할까요?
 
         AWS Global Accelerator를 사용하여 하나 이상의 AWS 리전에 있는 여러 로드 밸런서에 트래픽 분산(애플리케이션 상태, 네트워크 상태 및 사용자의 지리적 위치를 기반으로 트래픽을 전달하고 정적 애니 캐스트 IP 주소 세트 제공)
+
         Device -> AWS Global Accelerator(AWS edge, Global static anycast two IPs) -> (Amazon global network up to 10 AWS regions) each Region(Network load balancer) -> Amazon EC2
 
 
