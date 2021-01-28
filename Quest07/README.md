@@ -86,7 +86,7 @@
 ## Quest
 * EC2 인스턴스를 한 대 더 늘리고, 앞단에 ELB를 사용하여 두 대를 로드밸런싱 해 보세요. 직전 퀘스트에서 만들었던 컨테이너를 이용하시면 됩니다.(O)
 
-        Classic Load Balancer 사용
+        Classic Load Balancer 사용 -> Application Load Balancer로 수정
         sudo service nginx start
         sudo service docker start
         docker-compose up -d
