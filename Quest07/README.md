@@ -15,8 +15,13 @@
             -> 보통 Least Connection 후 동등한 수의 Connection일 때 Round Robin
 
         Target group(대상 그룹) : EC2 인스턴스를 오토 스케일링 할 수 있는 단위. 정의된 상태 검사 수행
-                                하나의 ELB(EC2 Load Balancer)에 여러 대상 그룹 연결 가능. 요청 포트에 따라 다른 대상 그룹으로 요청 전달 가능
+                                하나의 ELB(Elastic Load Balancer 내부적으로 트래픽 처리 성능 달라짐)에 여러 대상 그룹 연결 가능. 요청 포트에 따라 다른 대상 그룹으로 요청 전달 가능
+                                
         상태 검사(Health check) : 대상 그룹에 원하는 경로와 포트를 설정하여 정상적으로 원하는 HTTP 응답이 오는지 확인. 정상적으로 응답이 오지 않는 인스턴스가 있다면 비정상 상태의 인스턴스를 제외한 다른 인스턴스로만 트래픽 분산
+            Interval : Amount of time between health checks(5~300 seconds)
+            Response Timeout : Time to wait when receiving a response from the health check(2~60 seconds)
+            Healthy/Unhealthy threshold : Number of consecutive health check successes/failures before declaring an EC2 instance healthy/unhealthy
+
         리스너 : 구성한 프로토콜 및 포트를 사용하여 연결 요청을 확인하는 프로세스
 
 ## Checklist
@@ -32,7 +37,7 @@
 
 * AWS에서 제공하는 로드밸런서에는 어떤 종류가 있나요? 각각의 용도는 무엇일까요?
 
-        - Application Load Balancer
+        - Application Load Balancer  --> 7(HTTP) 계층 - ALB, HTTP 패킷 확인 -> 데이터가 더 캡슐화되어 네트워크 로드밸런서보다 더 무거움
 
             HTTP, HTTPS 트래픽의 로드밸런싱에 가장 적합. 마이크로서비스와 컨테이너 등 최신 애플리케이션 아키텍처 전달을 위한 고급 요청 라우팅 기능을 제공. 요청 내용에 따라 트래픽을 Amazon VPC 내의 대상으로 라우팅
             포트, 헤더 수정 가능
@@ -40,12 +45,12 @@
             대상을 EC2 인스턴스, 람다, IP로도 연결 가능. 특정 요청에 대해 서버 없이 직접 응답 메시지 작성 가능하여 마이크로 아키텍쳐 구성하기 좋음
             동적 호스트 포트 매핑을 지원하여 동일한 컨테이너 인스턴스에서 단일 서비스의 다중 작업 가능
 
-        - Network Load Balancer
+        - Network Load Balancer -> 5,6,7    L2(허브), 3계층(IP, L3 스위치 : 공유기 - 스위치, 4(TCP) - 네트워크 로드밸런서
 
             극도의 성능이 요구되는 TCP, TLS 트래픽의 로드 밸런싱에 가장 적합. 트래픽을 Amazon VPC 내의 대상으로 라우팅. 매우 짧은 지연 시간을 유지하면서 초당 수백만 개의 요청 처리 가능
             동적 호스트 포트 매핑을 지원하여 동일한 컨테이너 인스턴스에서 단일 서비스의 다중 작업 가능
 
-        - Gateway Load Balancer
+        - Gateway Load Balancer - 온프레미스 서비스 위함
 
             타사 가상 네트워킹 어플라이언스의 배포, 확장 및 실행을 쉽게 해줌. 트래픽의 소스와 대상에 대해 투명하게 작동. 보안, 네트워크 분석 및 기타 사용 사례에 타사 어플라이언스와 함께 사용하기에 적합
 
@@ -77,6 +82,8 @@
             한 URL의 요청을 다른 URL로 리디렉션
 
 * AWS의 여러 리전(서울, 도쿄 등)으로 로드밸런싱을 하는 것도 가능할까요?
+
+        리전별 로드밸런서들을 관리하는 로드밸런서 사용(총 두 단계의 로드밸런서 사용)
 
         AWS Global Accelerator를 사용하여 하나 이상의 AWS 리전에 있는 여러 로드 밸런서에 트래픽 분산(애플리케이션 상태, 네트워크 상태 및 사용자의 지리적 위치를 기반으로 트래픽을 전달하고 정적 애니 캐스트 IP 주소 세트 제공)
 
