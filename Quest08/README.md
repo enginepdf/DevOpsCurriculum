@@ -45,5 +45,25 @@
 
 ## Quest
 * AWS의 Systems Manager를 이용하여, 로컬 CLI 컨테이너 이미지를 배포하고 리모트 서버에서 그 이미지를 교체하여 띄울 수 있게 해 보세요. 한 개의 명령으로 이 모든 것이 이루어질 수 있게 하면 가장 좋습니다!
+
+        https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ec2-run-command.html\
+
+        IAM > Roles > ecsInstanceRole > AmazonSSmManagedInstanceCore --> Attach Policy
+        https://console.aws.amazon.com/systems-manager > Run Command > Run a command > Command document > AWS-RunShellScript
+
+        ``` Commands
+        sudo yum update -y
+        sudo amazon-linux-extras install docker
+        sudo service docker start
+        sudo usermod -a -G docker ec2-user
+        docker pull <Docker ID>/quest05:1.0
+        docker run -d -p 3000:3000 --name quest05 <Docker ID>/quest05:1.0
+        ```
+
 * 이번에는 EC2 대신 Fargate를 이용하여 같은 서비스를 구현해 보세요. 수동으로 배포하려면 어떻게 해야 할까요?
+
+        nginx 없이 Fargate 로드밸런서 이용 container의 port 3000으로 연결되도록 설정
+
 * Fargate에도 처음에 EC2에 한 배포 자동화를 구현해 보세요.
+        
+        CodePipeline?
