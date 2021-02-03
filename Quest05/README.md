@@ -81,13 +81,13 @@
 ## Quest
 * github의 개인 계정에 이번 퀘스트를 위한 리포를 만들어 보세요.(O)
 
-      https://github.com/enginepdf/Quest05
+      https://github.com/enginepdf/Quest
 
 * Quest 04에서 vi로 입력한 웹 서비스 대신 github의 저장소를 clone하여 같은 일을 하는 서버를 띄워 보세요.(O)
 
       sudo yum install git
-      git clone https://github.com/enginepdf/Quest05
-      cd Quest05
+      git clone https://github.com/enginepdf/Quest
+      cd Quest
       npm install
       sudo service nginx start
       node app.js  // port 3000 connected

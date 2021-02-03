@@ -68,8 +68,8 @@
 
 * Quest 05에서 작업한 서버를 컨테이너 기반으로 띄울 수 있게 수정해 보세요. (docker-compose는 사용하지 않습니다)
 
-        git clone https://github.com/enginepdf/Quest05  // docker build https://github.com/enginepdf/Quest05.git
-        cd Quest05
+        git clone https://github.com/enginepdf/Quest  // docker build https://github.com/enginepdf/Quest.git
+        cd Quest
         sudo service nginx start
         sudo service docker start
         docker build -t quest05:1.0 .
