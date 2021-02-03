@@ -10,6 +10,15 @@
 * CORS
 * Invalidation(Purging)
 
+        https://www.varnish-software.com/glossary/what-is-cache-invalidation/
+        https://www.imperva.com/blog/purge-cache-keeps-content-fresh-responsive/
+        
+        Cache invalidation refers to process during which web cache proxies declare cached content as invalid, 
+        meaning it will not longer be served as the most current piece of content when it is requested.
+        Several invalidation methods are possible, including purging, refreshing and banning.
+        Purging refers to the active removal of a resource from the cache without waiting for 
+        the predetermined cache expiry time
+
 ## Resources
 * https://aws.amazon.com/ko/s3/
 * https://aws.amazon.com/ko/cloudfront/
