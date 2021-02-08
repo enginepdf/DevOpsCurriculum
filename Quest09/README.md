@@ -84,6 +84,7 @@
 * 만들어 둔 서버 API로부터 특정 정보를 받아 웹 서비스로 뿌려주는 클라이언트를 개발해 봅시다.(O)
 
                 https://github.com/enginepdf/Quest/tree/main/ClientQ
+                // 서버로 fetch 할 링크 수정 필요
 
 * 이를 S3에 배포하고, Cloudfront를 통해 서비스하는 인프라를 구성해 봅시다.
 
