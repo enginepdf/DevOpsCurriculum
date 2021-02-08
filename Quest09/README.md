@@ -87,4 +87,8 @@
 
 * 이를 S3에 배포하고, Cloudfront를 통해 서비스하는 인프라를 구성해 봅시다.
 
+                www --> Edge Locations(Local Cache) of Cloudfront with OAI(Origin Access Identity) --> S3(clientq) as an Origin
+
 * 클라이언트를 수정 배포했을 때, 수정사항이 Cloudfront를 통해 최대한 빨리 반영되게 하려면 어떻게 해야 할까요?
+
+                TTL(Time To Live) 값을 작게 설정하여 Edge Locations의 Local Cache 교체가 빨리 이루어지게 한다.
