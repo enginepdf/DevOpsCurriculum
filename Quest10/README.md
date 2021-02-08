@@ -6,25 +6,25 @@
 ## Topics
 * 유닛 테스트
 
-    Unit testing — With unit tests we are testing small isolated pieces of our code.
+        Unit testing — With unit tests we are testing small isolated pieces of our code.
 
 * Mock과 Stub
 
 * 통합 테스트
 
-    Integration testing — In this type of testing we combine and test individual units and test them as a group.
+        Integration testing — In this type of testing we combine and test individual units and test them as a group.
 
 * E2E 테스트
 
-    End-to-end testing is a technique that tests the entire software product from beginning to end to ensure the application flow behaves as expected
-    The main purpose of End-to-end (E2E) testing is to test from the end user’s experience by simulating the real user scenario and validating the system under test and its components for integration and data integrity.
-        프론트엔드 - 원하는 text가 나오는지, 버튼 클릭 시 기대 동작을 하는지 등을 테스트
-        벡엔드 - API, Function 등에 mock 처리하여 기대하는 값을 return하는지 확인
+        End-to-end testing is a technique that tests the entire software product from beginning to end to ensure the application flow behaves as expected
+        The main purpose of End-to-end (E2E) testing is to test from the end user’s experience by simulating the real user scenario and validating the system under test and its components for integration and data integrity.
+            프론트엔드 - 원하는 text가 나오는지, 버튼 클릭 시 기대 동작을 하는지 등을 테스트
+            벡엔드 - API, Function 등에 mock 처리하여 기대하는 값을 return하는지 확인
 
 * Jest, Puppeteer
 
-    Jest: Is fully featured testing framework, which is developed by Facebook. It needs very little configuration and works basically out of the box.
-    Puppeteer: A Node.js library created by Google, which provides a convenient API to control Headless Chrome.
+        Jest: Is fully featured testing framework, which is developed by Facebook. It needs very little configuration and works basically out of the box.
+        Puppeteer: A Node.js library created by Google, which provides a convenient API to control Headless Chrome.
 
 ## Resources
 * https://www.popit.kr/unit-test-%EB%8B%A8%EC%9C%84-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EB%8F%84%EC%9E%85%ED%95%98%EA%B8%B0-1%ED%8E%B8/
