@@ -93,3 +93,7 @@
 * 클라이언트를 수정 배포했을 때, 수정사항이 Cloudfront를 통해 최대한 빨리 반영되게 하려면 어떻게 해야 할까요?
 
                 TTL(Time To Live) 값을 작게 설정하여 Edge Locations의 Local Cache 교체가 빨리 이루어지게 한다.
+
+                CloudFront Distributions > Invalidations > Create Invalidation > Object Paths : *  --> flush caches on Edge Locations over the world
+
+                Updating Existing Files Using Versioned File Names - you might put all graphics in an images_v1 directory and, when you want to start serving new versions of one or more graphics, you'd create a new images_v2 directory, and you'd update your links to point to that directory. With versioning, you don't have to wait for an object to expire before CloudFront begins to serve a new version of it, and you don't have to pay for object invalidation
