@@ -48,7 +48,8 @@
 
         https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ec2-run-command.html\
 
-        IAM > Roles > ecsInstanceRole > AmazonSSmManagedInstanceCore --> Attach Policy
+        IAM > Roles > ecsInstanceRole > Attach policies > AmazonSSmManagedInstanceCore --> Attach Policy
+
         https://console.aws.amazon.com/systems-manager > Run Command > Run a command > Command document > AWS-RunShellScript
 
         ``` Commands
@@ -56,7 +57,7 @@
         sudo amazon-linux-extras install docker
         sudo service docker start
         sudo usermod -a -G docker ec2-user
-        docker pull <Docker ID>/quest05:1.0
+        docker pull <Docker ID>/<image>:1.0
         docker run -d -p 3000:3000 --name quest05 <Docker ID>/<image>:1.0
         ```
 
