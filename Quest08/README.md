@@ -84,4 +84,15 @@
 
 * Fargate에도 처음에 EC2에 한 배포 자동화를 구현해 보세요.
         
-        AWS CLI를 이용한 수동 배포
+        https://docs.aws.amazon.com/ko_kr/AmazonECS/latest/developerguide/ECS_CLI_installation.html
+        https://docs.aws.amazon.com/ko_kr/AmazonECS/latest/developerguide/ecs-cli-tutorial-fargate.html
+        https://blog.ull.im/engineering/2019/01/01/aws-cli-ecs-fargate-service-discovery.html
+
+        aws ecs create-cluster
+        aws ecs register-task-definition
+        aws ecs create-service
+        docker build -t ECR .
+        docker push ECR-URL
+        aws ecs update-service --cluster --service --force-new-deployment
+
+        *AWS CLI를 이용한 수동 배포
