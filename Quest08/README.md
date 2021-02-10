@@ -54,16 +54,31 @@
 
         ``` Commands
         sudo yum update -y
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+        . ~/.nvm/nvm.sh
+        nvm install node
+        node -v
+
         sudo amazon-linux-extras install docker
+        sudo yum install git
+        git clone https://github.com/enginepdf/Quest
+        docker build -t <Docker Hub ID>/<image>:<tag> .   // docker build <image> . 
+        docker push <Docker ID>/<Image name>:<tag>
+        
         sudo service docker start
+        cd Quest
         sudo usermod -a -G docker ec2-user
         docker pull <Docker ID>/<image>:1.0
         docker run -d -p 3000:3000 --name quest05 <Docker ID>/<image>:1.0
         ```
 
+        --> .sh에 이 명령들을 담아서 한번에 실행
+
 * 이번에는 EC2 대신 Fargate를 이용하여 같은 서비스를 구현해 보세요. 수동으로 배포하려면 어떻게 해야 할까요?
 
         nginx 없이 Fargate, ALB 이용 container의 port 3000으로 연결되도록 설정
+
+        Docker Hub 혹은 ECR에 이미지 업데이트 내용을 푸시하고 Fargate 서비스에서 roll update가 되도록 한다.
 
         * 수동으로 배포한다는 것 : 1) 도커 이미지를 만들어서 푸시 2) AWS 콘솔을 이용해서 이미지를 업데이트하고 태스크 버전을 올려주는 것
 
