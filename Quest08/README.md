@@ -52,6 +52,8 @@
 
         https://console.aws.amazon.com/systems-manager > Run Command > Run a command > Command document > AWS-RunShellScript
 
+        배포의 경우 설치는 되어 있다고 생각
+
         ``` Commands
         sudo yum update -y
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
@@ -61,8 +63,10 @@
 
         sudo amazon-linux-extras install docker
         sudo yum install git
-        git clone https://github.com/enginepdf/Quest
-        docker build -t <Docker Hub ID>/<image>:<tag> .   // docker build <image> . 
+        // git clone https://github.com/enginepdf/Quest
+        // docker build -t <Docker Hub ID>/<image>:<tag> .   // docker build <image> . 
+        docker pull  // run    remote
+
         docker push <Docker ID>/<Image name>:<tag>
         
         sudo service docker start
@@ -80,6 +84,9 @@
 
         Docker Hub 혹은 ECR에 이미지 업데이트 내용을 푸시하고 Fargate 서비스에서 roll update가 되도록 한다.
 
+        push, force update
+
+        --> sh
         * 수동으로 배포한다는 것 : 1) 도커 이미지를 만들어서 푸시 2) AWS 콘솔을 이용해서 이미지를 업데이트하고 태스크 버전을 올려주는 것
 
 * Fargate에도 처음에 EC2에 한 배포 자동화를 구현해 보세요.
@@ -88,11 +95,15 @@
         https://docs.aws.amazon.com/ko_kr/AmazonECS/latest/developerguide/ecs-cli-tutorial-fargate.html
         https://blog.ull.im/engineering/2019/01/01/aws-cli-ecs-fargate-service-discovery.html
 
+        코드 업데이트 
         aws ecs create-cluster
         aws ecs register-task-definition
         aws ecs create-service
+        --> 배포 전 
+
         docker build -t ECR .
         docker push ECR-URL
         aws ecs update-service --cluster --service --force-new-deployment
+        shell
 
         *AWS CLI를 이용한 수동 배포
