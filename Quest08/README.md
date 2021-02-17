@@ -47,8 +47,11 @@
 * AWS의 Systems Manager를 이용하여, 로컬 CLI 컨테이너 이미지를 배포하고 리모트 서버에서 그 이미지를 교체하여 띄울 수 있게 해 보세요. 한 개의 명령으로 이 모든 것이 이루어질 수 있게 하면 가장 좋습니다!
 
         EC2 Instance(with SSM Agent) --> SSM
+
+        IAM > Create role > AmazonEC2RoleforSSM  --> apply to EC2 instances to manage
+
+        AWS Systems Manager > Managed Instance
         
-        IAM > Create role > AmazonEC2RoleforSSM
 
         https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ec2-run-command.html\
 
