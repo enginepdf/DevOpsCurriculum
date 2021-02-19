@@ -18,7 +18,8 @@
 
         AWS 인프라에 대한 가시성과 제어 제공
         통합된 사용자 인터페이스 제공 -> 여러 AWS 서비스의 운영 데이터를 보고 AWS 리소스 전체에서 운영 작업 자동화 가능
-        EC2 인스턴스, Amazon EKS 클러스터, S3 버킷 또는 RDS 인스턴스와 같은 리소스를 애플리케이션별 그룹화, 모니터링, 문제 해결을 위해 운영 데이터를 보고, 사전 승인된 변경 워크플로를 구현, 리소스 그룹에 대한 운영 변경 감사 가능
+        EC2 인스턴스, Amazon EKS 클러스터, S3 버킷 또는 RDS 인스턴스와 같은 리소스를 애플리케이션별 그룹화, 모니터링, 문제 해결을 위해 운영 데이터를 보고, 
+        사전 승인된 변경 워크플로를 구현, 리소스 그룹에 대한 운영 변경 감사 가능
         리소스 및 애플리케이션 관리 간소화, 운영 문제를 탐지 및 해결하는 시간 단축, 인프라를 대규모로 안전하게 운영 및 관리할 수 있게 해줌
 
 * AWS의 Fargate는 어떤 서비스인가요? 어떤 장점을 가지고 있나요?
@@ -58,7 +59,8 @@
 
 
         Systems Manager > Session Manager > choose the instance you want to access(배포의 경우 기본적인 설치는 되어 있다고 생각)
-                        -->  sudo yum update -y
+                        -->  sudo su
+                             sudo yum update -y
                              curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
                              . ~/.nvm/nvm.sh
                              nvm install node
@@ -70,12 +72,14 @@
                              sudo yum install git
                              git version
 
+                             sudo service docker start
+
 
         (Local CLI on your notebook)
                 aws ssm send-command \
 	                --document-name "AWS-RunShellScript" \
 	                --targets '[{"Key":"InstanceIds","Values":["i-0f184c6a223a7885d"]}]' \
-	                --parameters '{"commands":["#!/bin/bash","sudo service docker start","docker pull <Docker ID>/<image>:1.0","docker run -d -p 3000:3000 --name quest05 <Docker ID>/<image>:1.0"]}'
+	                --parameters '{"commands":["#!/bin/bash","docker pull <Docker ID>/<image>:1.0","docker run -d -p 3000:3000 --name quest05 <Docker ID>/<image>:1.0"]}'
      
         --> 이미지를 교체하고 싶다면 commands 배열 내부에 기존 docker image를 stop 시키고 docker run <image>하면 됨.
 
