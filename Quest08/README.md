@@ -90,7 +90,10 @@
                 aws ssm send-command \
 	                --document-name "AWS-RunShellScript" \
 	                --targets '[{"Key":"InstanceIds","Values":["i-0f184c6a223a7885d"]}]' \
-	                --parameters '{"commands":["#!/bin/bash","docker pull <Docker ID>/<image>:1.0","docker run -d -p 3000:3000 --name quest <Docker ID>/<image>:1.0"]}'
+	                --parameters '{"commands":["#!/bin/bash","docker pull dockerdap12/quest05:1.0","docker run -d -p 3000:3000 --name quest dockerdap12/quest05:1.0"]}'
+
+                instance public ip:3000/check1
+                instance public ip:3000/process/check
      
         --> 이미지를 교체하고 싶다면 commands 배열 내부에 기존 docker image를 stop 시키고 docker run <image>하면 됨.
 
