@@ -73,6 +73,7 @@
                              git version
 
                              sudo service docker start
+        (aws ssm start-session --target i-0f184c6a223a7885d    // connecting to the instance(with Instance ID) )                     
 
 
         (Local CLI on your notebook)
@@ -84,8 +85,6 @@
                 curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac/sessionmanager-bundle.zip" -o "sessionmanager-bundle.zip"
                 unzip sessionmanager-bundle.zip
                 sudo ./sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/local/bin/session-manager-plugin     // Installation successful!
-
-                aws ssm start-session --target i-0f184c6a223a7885d    // connecting to the instance(with Instance ID) 
 
                 aws ssm send-command \
 	                --document-name "AWS-RunShellScript" \
