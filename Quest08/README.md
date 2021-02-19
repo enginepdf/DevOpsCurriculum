@@ -85,7 +85,7 @@
                 unzip sessionmanager-bundle.zip
                 sudo ./sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/local/bin/session-manager-plugin     // Installation successful!
 
-                aws ssm start-session --target i-0f184c6a223a7885d    // connecting to the instance 
+                aws ssm start-session --target i-0f184c6a223a7885d    // connecting to the instance(with Instance ID) 
 
                 aws ssm send-command \
 	                --document-name "AWS-RunShellScript" \
@@ -100,12 +100,13 @@
         A container -> B container(updated) -> B container error occurs 
                                             -> roll back to A or make C container 
                                  
-        nginx 없이 Fargate, ALB 이용 container의 port 3000으로 연결되도록 설정
+        nginx 없이 Fargate(ALB를 이용해서 구현 후 작동 확인 및 삭제 그리고 task 1개로 구현, 해당 task의 publicIP:3000/check1, publicIP:3000/process/check로 접속 가능) container의 port 3000으로 연결되도록 설정
 
         Docker Hub 혹은 ECR에 이미지 업데이트 내용을 푸시하고 Fargate 서비스에서 roll update가 되도록 한다. push, force update
 
 
         * 수동으로 배포한다는 것 : 1) 도커 이미지를 만들어서 푸시 2) AWS 콘솔을 이용해서 이미지를 업데이트하고 태스크 버전을 올려주는 것
+
 
 * Fargate에도 처음에 EC2에 한 배포 자동화를 구현해 보세요.
         
