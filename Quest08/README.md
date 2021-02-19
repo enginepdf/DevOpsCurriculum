@@ -44,48 +44,46 @@
         * 업타임 : 동작 중이면서 사용 가능한 기계(일반적으로 컴퓨터)의 시간을 백분율로 나타낸 시스템의 신뢰성의 측정(반의어는 다운타임)
 
 ## Quest
-* AWS의 Systems Manager를 이용하여, 로컬 CLI 컨테이너 이미지를 배포하고 리모트 서버에서 그 이미지를 교체하여 띄울 수 있게 해 보세요. 한 개의 명령으로 이 모든 것이 이루어질 수 있게 하면 가장 좋습니다!
+* AWS의 Systems Manager를 이용하여, 로컬 CLI 컨테이너 이미지를 배포하고 리모트 서버에서 그 이미지를 교체하여 띄울 수 있게 해 보세요. 한 개의 명령으로 이 모든 것이 이루어질 수 있게 하면 가장 좋습니다!   // AWS CLI -> 컨테이너 이미지 배포  aws ssm ~~   docker stop <image> docker run <image>
+
+        https://docs.aws.amazon.com/ko_kr/systems-manager/latest/userguide/walkthrough-cli.html
 
         EC2 Instance(with SSM Agent) --> SSM
 
-        IAM > Create role > AmazonEC2RoleforSSM  --> apply to EC2 instances to manage
+        IAM > Create role > AmazonEC2RoleforSSM > role name : AWSEC2RoleforSSM  --> apply to EC2 instances to manage
 
-        AWS Systems Manager > Managed Instance
-        
+        AWS Systems Manager > Managed Instance > check the instance on the list
 
-        https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ec2-run-command.html\
+        EC2 > Instances > Launch instances > AMI(Amazon Linux2) > IAM role : AWSEC2RoleforSSM > Configure Security Group : Create without any rule
 
-        IAM > Roles > ecsInstanceRole > Attach policies > AmazonSSmManagedInstanceCore --> Attach Policy
 
-        https://console.aws.amazon.com/systems-manager > Run Command > Run a command > Command document > AWS-RunShellScript
+        Systems Manager > Session Manager > choose the instance you want to access(배포의 경우 기본적인 설치는 되어 있다고 생각)
+                        -->  sudo yum update -y
+                             curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+                             . ~/.nvm/nvm.sh
+                             nvm install node
+                             node -v
 
-        배포의 경우 설치는 되어 있다고 생각
+                             sudo amazon-linux-extras install docker
+                             docker version
 
-        ``` Commands
-        sudo yum update -y
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-        . ~/.nvm/nvm.sh
-        nvm install node
-        node -v
+                             sudo yum install git
+                             git version
 
-        sudo amazon-linux-extras install docker
-        sudo yum install git
-        // git clone https://github.com/enginepdf/Quest
-        // docker build -t <Docker Hub ID>/<image>:<tag> .   // docker build <image> . 
-        docker pull  // run    remote
 
-        docker push <Docker ID>/<Image name>:<tag>
-        
-        sudo service docker start
-        cd Quest
-        sudo usermod -a -G docker ec2-user
-        docker pull <Docker ID>/<image>:1.0
-        docker run -d -p 3000:3000 --name quest05 <Docker ID>/<image>:1.0
-        ```
+        Local CLI on your notebook
+                aws ssm send-command \
+	        --document-name "AWS-RunShellScript" \
+	        --targets '[{"Key":"InstanceIds","Values":["i-0f184c6a223a7885d"]}]' \
+	        --parameters '{"commands":["#!/bin/bash","sudo service docker start","docker pull <Docker ID>/<image>:1.0","docker run -d -p 3000:3000 --name quest05 <Docker ID>/<image>:1.0"]}'
+     
+        --> 이미지를 교체하고 싶다면 commands 배열 내부에 기존 docker image를 stop 시키고 docker run <image>하면 됨.
 
-        --> .sh에 이 명령들을 담아서 한번에 실행
 
 * 이번에는 EC2 대신 Fargate를 이용하여 같은 서비스를 구현해 보세요. 수동으로 배포하려면 어떻게 해야 할까요?
+
+        A container -> update -> B container
+        
 
         nginx 없이 Fargate, ALB 이용 container의 port 3000으로 연결되도록 설정
 
