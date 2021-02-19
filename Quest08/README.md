@@ -71,27 +71,25 @@
                              git version
 
 
-        Local CLI on your notebook
+        (Local CLI on your notebook)
                 aws ssm send-command \
-	        --document-name "AWS-RunShellScript" \
-	        --targets '[{"Key":"InstanceIds","Values":["i-0f184c6a223a7885d"]}]' \
-	        --parameters '{"commands":["#!/bin/bash","sudo service docker start","docker pull <Docker ID>/<image>:1.0","docker run -d -p 3000:3000 --name quest05 <Docker ID>/<image>:1.0"]}'
+	                --document-name "AWS-RunShellScript" \
+	                --targets '[{"Key":"InstanceIds","Values":["i-0f184c6a223a7885d"]}]' \
+	                --parameters '{"commands":["#!/bin/bash","sudo service docker start","docker pull <Docker ID>/<image>:1.0","docker run -d -p 3000:3000 --name quest05 <Docker ID>/<image>:1.0"]}'
      
         --> 이미지를 교체하고 싶다면 commands 배열 내부에 기존 docker image를 stop 시키고 docker run <image>하면 됨.
 
 
-* 이번에는 EC2 대신 Fargate를 이용하여 같은 서비스를 구현해 보세요. 수동으로 배포하려면 어떻게 해야 할까요?
+* 이번에는 EC2 대신 Fargate를 이용하여 같은 서비스를 구현해 보세요.(O) 수동으로 배포하려면 어떻게 해야 할까요?
 
-        A container -> update -> B container
-        
-
+        A container -> B container(updated) -> B container error occurs 
+                                            -> roll back to A or make C container 
+                                 
         nginx 없이 Fargate, ALB 이용 container의 port 3000으로 연결되도록 설정
 
-        Docker Hub 혹은 ECR에 이미지 업데이트 내용을 푸시하고 Fargate 서비스에서 roll update가 되도록 한다.
+        Docker Hub 혹은 ECR에 이미지 업데이트 내용을 푸시하고 Fargate 서비스에서 roll update가 되도록 한다. push, force update
 
-        push, force update
 
-        --> sh
         * 수동으로 배포한다는 것 : 1) 도커 이미지를 만들어서 푸시 2) AWS 콘솔을 이용해서 이미지를 업데이트하고 태스크 버전을 올려주는 것
 
 * Fargate에도 처음에 EC2에 한 배포 자동화를 구현해 보세요.
