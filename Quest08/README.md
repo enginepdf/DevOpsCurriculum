@@ -76,10 +76,21 @@
 
 
         (Local CLI on your notebook)
+
+                https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html#install-plugin-macos
+
+                aws configure
+
+                curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac/sessionmanager-bundle.zip" -o "sessionmanager-bundle.zip"
+                unzip sessionmanager-bundle.zip
+                sudo ./sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/local/bin/session-manager-plugin     // Installation successful!
+
+                aws ssm start-session --target i-0f184c6a223a7885d    // connecting to the instance 
+
                 aws ssm send-command \
 	                --document-name "AWS-RunShellScript" \
 	                --targets '[{"Key":"InstanceIds","Values":["i-0f184c6a223a7885d"]}]' \
-	                --parameters '{"commands":["#!/bin/bash","docker pull <Docker ID>/<image>:1.0","docker run -d -p 3000:3000 --name quest05 <Docker ID>/<image>:1.0"]}'
+	                --parameters '{"commands":["#!/bin/bash","docker pull <Docker ID>/<image>:1.0","docker run -d -p 3000:3000 --name quest <Docker ID>/<image>:1.0"]}'
      
         --> 이미지를 교체하고 싶다면 commands 배열 내부에 기존 docker image를 stop 시키고 docker run <image>하면 됨.
 
