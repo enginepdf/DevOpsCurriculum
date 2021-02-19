@@ -92,8 +92,8 @@
 	                --targets '[{"Key":"InstanceIds","Values":["i-0f184c6a223a7885d"]}]' \
 	                --parameters '{"commands":["#!/bin/bash","docker pull dockerdap12/quest05:1.0","docker run -d -p 3000:3000 --name quest dockerdap12/quest05:1.0"]}'
 
-                instance public ip:3000/check1
-                instance public ip:3000/process/check
+                instance public ip:3000/check1    // this is /check1
+                instance public ip:3000/process/check    // this is /process/check
      
         --> 이미지를 교체하고 싶다면 commands 배열 내부에 기존 docker image를 stop 시키고 docker run <image>하면 됨.
 
@@ -104,6 +104,9 @@
                                             -> roll back to A or make C container 
                                  
         nginx 없이 Fargate(ALB를 이용해서 구현 후 작동 확인 및 삭제 그리고 task 1개로 구현, 해당 task의 publicIP:3000/check1, publicIP:3000/process/check로 접속 가능) container의 port 3000으로 연결되도록 설정
+
+        task의 publicIP:3000/check1    // this is /check1
+        task의 publicIP:3000/process/check     // this is /process/check
 
         Docker Hub 혹은 ECR에 이미지 업데이트 내용을 푸시하고 Fargate 서비스에서 roll update가 되도록 한다. push, force update
 
