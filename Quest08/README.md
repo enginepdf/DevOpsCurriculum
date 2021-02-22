@@ -55,7 +55,7 @@
 
         AWS Systems Manager > Managed Instance > check the instance on the list
 
-        EC2 > Instances > Launch instances > AMI(Amazon Linux2) > IAM role : AWSEC2RoleforSSM > Configure Security Group : Create without any rule
+        EC2 > Instances > Launch instances > AMI(Amazon Linux2) > IAM role : AWSEC2RoleforSSM > Configure Security Group : open port 3000 inbound
 
 
         Systems Manager > Session Manager > choose the instance you want to access(배포의 경우 기본적인 설치는 되어 있다고 생각)
@@ -102,10 +102,10 @@
         A container -> B container(updated) -> B container error occurs 
                                             -> roll back to A or make C container 
                                  
-        nginx 없이 Fargate(ALB를 이용해서 구현 후 작동 확인 및 삭제 그리고 task 1개로 구현, 해당 task의 publicIP:3000/check1, publicIP:3000/process/check로 접속 가능) container의 port 3000으로 연결되도록 설정
+        Fargate(ALB를 이용해서 구현, task 2개로 요청 전달)
 
-        task의 publicIP:3000/check1    // this is /check1
-        task의 publicIP:3000/process/check     // this is /process/check
+        ALB/check1    // this is /check1
+        ALB/process/check     // this is /process/check
 
         Docker Hub 혹은 ECR에 이미지 업데이트 내용을 푸시하고 Fargate 서비스에서 roll update가 되도록 한다. push, force update
 
