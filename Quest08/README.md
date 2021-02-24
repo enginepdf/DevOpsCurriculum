@@ -96,6 +96,22 @@
      
         --> 이미지를 교체하고 싶다면 commands 배열 내부에 기존 docker image를 stop 시키고 docker run <image>하면 됨.
 
+        실행 중일 때 다시 같은 이미지 실행하면 자동 종료 후 실행하는 docker 명령
+
+        ```build.sh
+
+        #!/bin/bash
+        build
+
+        ```
+
+        ```deploy.sh
+
+        #!/bin/bash
+        push
+        command
+
+        ```
 
 * 이번에는 EC2 대신 Fargate를 이용하여 같은 서비스를 구현해 보세요.(O) 수동으로 배포하려면 어떻게 해야 할까요?
 
@@ -119,15 +135,29 @@
         https://docs.aws.amazon.com/ko_kr/AmazonECS/latest/developerguide/ecs-cli-tutorial-fargate.html
         https://blog.ull.im/engineering/2019/01/01/aws-cli-ecs-fargate-service-discovery.html
 
-        코드 업데이트 
+
         aws ecs create-cluster
         aws ecs register-task-definition
         aws ecs create-service
-        --> 배포 전 
+        --> 배포 전(또는 AWS 웹 상에서 먼저 세팅)
 
+        ```build.sh
+
+        #!/bin/bash
         docker build -t ECR .
-        docker push ECR-URL
-        aws ecs update-service --cluster --service --force-new-deployment
-        shell
+        docker push ECR-URL // 또는 docker-compose push <image>
 
-        *AWS CLI를 이용한 수동 배포
+        ```
+
+        ```deploy.sh
+
+        #!/bin/bash
+
+        aws ecs update-service \
+                --region \
+                --profile
+                --cluster <Cluster name> \
+                --service <Service name> \
+                --force-new-deployment
+        
+        ```
