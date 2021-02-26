@@ -116,12 +116,12 @@
 * 만들어 둔 서버 API로부터 특정 정보를 받아 웹 서비스로 뿌려주는 클라이언트를 개발해 봅시다.(O)
 
                 https://github.com/enginepdf/Quest/tree/main/ClientQ
-                // 서버로 fetch 할 링크 수정 필요
+                // 서버로 fetch 할 링크 수정 필요(S3 bucket에 있는 클라이언트는 링크 수정 후 업로드 됨, 완료)
 
 * 이를 S3에 배포하고, Cloudfront를 통해 서비스하는 인프라를 구성해 봅시다.(O)
 
                 www --> Edge Locations(Local Cache) of Cloudfront with OAI(Origin Access Identity) --> S3(clientq) as an Origin
-                S3에 클라이언트 파일 업로드만 안 되어 있고 설정은 됨
+                dockerdap12/quest:2.0 에 cors 설정된 서버 올려져 있고 Fargate task 관련 링크로 수정 후 재배포 됨. ALB를 통해 Fargate task로 요청 처리
 
 * 클라이언트를 수정 배포했을 때, 수정사항이 Cloudfront를 통해 최대한 빨리 반영되게 하려면 어떻게 해야 할까요?
 
