@@ -144,8 +144,7 @@
         ```build.sh
 
         #!/bin/bash
-        docker build -t ECR .
-        docker push ECR-URL // 또는 docker-compose push <image>
+        docker build -t ECR . // docker build -t <dockerhub> . or docker-compose -t <dockerhub> .
 
         ```
 
@@ -153,9 +152,10 @@
 
         #!/bin/bash
 
+        docker push ECR-URL // 또는 docker push <image> or docker-compose push <image>
         aws ecs update-service \
                 --region \
-                --profile
+                --profile \
                 --cluster <Cluster name> \
                 --service <Service name> \
                 --force-new-deployment
