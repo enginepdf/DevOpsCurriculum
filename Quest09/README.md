@@ -51,7 +51,7 @@
 
         주어진 리소스의 복사본을 저장하고 있다가 요청 시에 그것을 제공하는 기술
         웹 케시가 자신의 저장소 내에 요청된 리소스를 가지고 있다면, 요청을 가로채 원래의 서버로부터 리소스를 다시 다운로드 하는 대신 리소스의 복사본 반환
-        모든 리소스가 영언히 변하지 않는 것은 아니므로 리소스가 변하기 전까지만 캐싱하고 변한 이후에는 더이상 캐싱하지 않는 것이 중요
+        모든 리소스가 영원히 변하지 않는 것은 아니므로 리소스가 변하기 전까지만 캐싱하고 변한 이후에는 더이상 캐싱하지 않는 것이 중요
 
                 - 공유 캐시 : 한 명 이상의 사용자가 재사용할 수 있도록 응답을 저장하는 캐시
                 - 사설 캐시 : 한 명의 사용자만 사용하는 캐시
@@ -80,6 +80,38 @@
                 Access-Control-Request-Method: <method>
                 Access-Control-Request-Headers: <field-name>[, <field-name>]*
 
+        EC2 서버 : Security Group inbound 설정 및 Node.js의 경우에 cors 라이브러리를 사용하거나 직접 Access-Control-Allow-Origin 관련 헤더 설정을 해준다.
+        S3 : CORS 설정을 하고 싶은 Bucket의 Permissions에서 아래와 같은 설정을 한다. 상황에 따라 몇가지 더 추가하려면 공식 사이트, 구글링 등을 해본다. (https://docs.aws.amazon.com/ko_kr/AmazonS3/latest/dev/cors.html)
+
+                (XML version)
+                <CORSConfiguration>
+                        <CORSRule>
+                                <AllowedOrigin>"http://www.example.com"</AllowedOrigin>
+                                <AllowedMethod>GET</AllowedMethod>
+                                <MaxAgeSeconds>3000</MaxAgeSeconds>
+                                <AllowedHeader>Authorization</AllowedHeader>
+                        </CORSRule>
+                </CORSConfiguration>
+
+                (JSON version)
+                [
+                        {
+                                "AllowedHeaders": [
+                                        "*"
+                                ],
+                                "AllowedMethods": [
+                                        "GET"
+                                ],
+                                "AllowedOrigins": [
+                                        "http://www.example.com"
+                                ],
+                                "ExposeHeaders": [
+                                        "x-amz-server-side-encryption",
+                                ],
+                                "MaxAgeSeconds": 3000
+                        }
+                ]
+
 ## Quest
 * 만들어 둔 서버 API로부터 특정 정보를 받아 웹 서비스로 뿌려주는 클라이언트를 개발해 봅시다.(O)
 
@@ -97,4 +129,8 @@
 
                 CloudFront Distributions > Invalidations > Create Invalidation > Object Paths : *  --> flush caches on Edge Locations over the world
 
-                Updating Existing Files Using Versioned File Names - you might put all graphics in an images_v1 directory and, when you want to start serving new versions of one or more graphics, you'd create a new images_v2 directory, and you'd update your links to point to that directory. With versioning, you don't have to wait for an object to expire before CloudFront begins to serve a new version of it, and you don't have to pay for object invalidation
+                Updating Existing Files Using Versioned File Names - you might put all graphics in an images_v1 directory and, 
+                when you want to start serving new versions of one or more graphics, you'd create a new images_v2 directory, 
+                and you'd update your links to point to that directory. With versioning, you don't have to wait for an object 
+                to expire before CloudFront begins to serve a new version of it, and you don't have to pay for object invalidation
+                (폴더명에 버전을 쉽게 확인할 수 있도록 한다.)
