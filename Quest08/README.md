@@ -118,7 +118,7 @@
         A container -> B container(updated) -> B container error occurs 
                                             -> roll back to A or make C container 
                                  
-        Fargate(ALB를 이용해서 구현, task 2개로 요청 전달)
+        Fargate(ALB를 통해 task 2개로 요청 전달)
 
         ALB/check1    // this is /check1
         ALB/process/check     // this is /process/check
@@ -144,7 +144,7 @@
         ```build.sh
 
         #!/bin/bash
-        docker build -t ECR . // docker build -t <dockerhub> . or docker-compose -t <dockerhub> .
+        docker build -t ECR . // docker build -t <dockerhub> . or docker-compose build -t <dockerhub> .
 
         ```
 
