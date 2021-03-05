@@ -108,4 +108,8 @@
                }  --> Stub is like making sure a method returns the correct value
 
 ## Quest
-* Jest를 이용해, 클라이언트의 테스트, 서버의 테스트, 그리고 클라이언트와 서버의 통합(E2E) 테스트를 만들어 보세요.
+* Jest를 이용해, 클라이언트의 테스트, 서버의 테스트, 그리고 클라이언트와 서버의 통합(E2E) 테스트를 만들어 보세요.(O)
+
+        https://github.com/enginepdf/Quest 
+        cd ClientQ
+        npm start (테스트를 로컬에서 클라이언트 실행 상태로 해야 작동)
