@@ -346,7 +346,7 @@
                   Frame is marked : 와이어샤크에 의해 해당 프레임이 마크되었는지 여부
                   Frame is ignored : 와이어샤크에 의해 해당 프레임이 무시되었는지 여부
                   Protocols in frame : 패킷에 포함되어 있는 헤더
-                  Numbers of per-protocol-data : 프로토콜별 포함된 데이터 갯수
+                  Numbers of per-protocol-data : 프로토콜별 포함된 데이터 개수
                   Coloring Rule Name : 와이어샤크 컬러링에 사용된 규칙 이름
                   Coloring Rule String : 와이어샤크 컬러링에 사용된 규칙의 표시 필터
                

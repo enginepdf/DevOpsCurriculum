@@ -5,6 +5,9 @@
 
 ## Topics
 * DNS
+
+    Root > Top Level Domains > Second Level Domains > subdomains > hosts
+
 * Route53
 * HTTPS
 * TLS
@@ -22,11 +25,46 @@
 
 ## Checklist
 * DNS의 레코드에는 어떤 종류들이 있나요? 이 종류들은 어떤 용도로 쓰일까요?
+
+    A(Host) : 주소/호스트 레코드
+              정규화된 도메인 이름/호스트명(Fully Qualified Domain Name, FQDN)을 IPv4에 연결
+
+    AAAA : 주소 레코드
+           호스트를 IPv6에 연결
+
+    CNAME(Canonical NAME) : 별칭 레코드
+                            실제 호스트명(A 레코드)과 연결되는 별칭, 별명을 정의
+
+    MX(Mail Exchange) : 메일 교환 레코드
+                        메일 서버(사서함)에 도달할 수 있는 라우팅 정보(메일 서버)를 제공
+
+    SRV(SeRVice) : 서비스 위치 레코드
+                   비슷한 TCP/IP 서비스를 제공하는 다수의 서버 위치 정보를 제공
+
+    PTR(PoinTeR) : 포인터 리소스 레코드
+                   다른 DNS 레코드를 가리킴. 역방향 조회에서 A 레코드를 가리킬 때 사용
+
+    SOA(Start Of Authority) : 권한 시작 레코드
+                              DNS 영역의 주 DNS 서버를 정의하며 일련번호를 통해 영역의 변경사항을 기록
+                              보조 영역의 새로고침 및 다시시도 간격 등을 정의. 영역의 기본 TTL 값 정의
+
+    NS(Name Server) : 네임 서버 레코드
+                      영역을 풀이할 수 있는 DNS 서버의 목록을 가짐
+
 * Route53의 Alias 기능이란 무엇인가요?
+
+    Amazon Route 53 alias records provide a Route 53–specific extension to DNS functionality. Alias records let you route traffic to selected AWS resources, such as CloudFront distributions and Amazon S3 buckets
+
 * 대부분의 최신 브라우저에서는 HTTP 대신 HTTPS가 권장됩니다. 이유가 무엇일까요?
+
 * HTTPS와 TLS는 어떤 식으로 동작하나요? HTTPS는 어떤 역사를 가지고 있나요?
+
 * HTTPS의 서비스 과정에서 인증서는 어떤 역할을 할까요? 인증서는 어떤 체계로 되어 있을까요?
+
 * HTTP/3은 기존 버전과 어떻게 다를까요? HTTP의 버전 3이 나오게 된 이유는 무엇일까요?
+
+    TCP와 TLS에서 동작하는 HTTP/2의 단점으로 알려진 문제를 해결하면서 안정적이고 안전한 새 전송 프로토콜
+
 
 ## Quest
 * `xxx.knowre.com`에 해당하는 커스텀 도메인을 하나 부여해 드리겠습니다. Route53을 활용하여 이 도메인의 자체 네임서버를 구축해 보세요.
