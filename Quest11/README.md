@@ -122,13 +122,22 @@
             There are also more advanced tools such as OWASP ZAP if you are interested in digging deeper into these topics.
 
 ## Quest
-* VPC를 구축하고, 적절한 서브넷 설정, 보안 그룹과 방화벽을 설정해 보세요. 각각의 단계와 구성요소들이 어떤 의미인지 이해해야 합니다.
+* VPC를 구축하고, 적절한 서브넷 설정, 보안 그룹과 방화벽을 설정해 보세요. 각각의 단계와 구성요소들이 어떤 의미인지 이해해야 합니다.(O)
 
-        Network Access Control List(NACL)
-        Security Group
-        Subnet
+        VPC - QUESTVPC라고 설정
+        Subnet - 2개 생성 됨
+        Network Access Control List(NACL) - 기본 설정 사용. 2개의 서브넷과 연결 됨
+        Security Group - default 사용
+        Route Tables - Subnet 2개와 인터넷 게이트웨이 연결 처리 됨
 
-* 지금까지 구현한 웹 어플리케이션을 VPC 안에서 서비스 해 보세요.
+* 지금까지 구현한 웹 어플리케이션을 VPC 안에서 서비스 해 보세요.(O)
+
+        ALB -> Fargate로 구성
+
+        VPC에 인터넷 게이트웨이를 연결
+        서브넷의 라우팅 테이블이 인터넷 게이트웨이를 가리키는지 확인
+        서브넷의 인스턴스에 전역적으로 고유한 IP 주소가 있는지 확인 + 네트워크 액세스 제어 및 보안 그룹 규칙 확인
+
 
         계정을 처음 만들었을 때 하나의 리전에서 만들어지는 리소스
 
@@ -151,7 +160,7 @@
                 n Subnet(n은 사용할 수 있는 가용존의 개수)
 
                         VPC(논리적 범위)는 CIDR 블록을 가지는 단위로 나눠짐
-                        서브넷(실제 리소스가 생성 가능한 네트워크)은 리소스가 생성되는 물리적인 공간이 Available Zone과 연결
+                        서브넷(실제 리소스가 생성 가능한 네트워크)은 리소스가 생성되는 물리적인 공간이 Availability Zone과 연결
                         하나의 VPC는 N개의 서브넷을 가질 수 있고 최대 크기는 VPC의 크기와 같음(VPC와 동일한 크기의 서브넷 한 개 만들기 가능)
                         N Availability Zone(AZ)만큼 서브넷 만들어 리소스 분산 -> 재해 대응 측면에서 유리
                         리전에 따라 사용 가능한 AZ 개수 다름. 하나의 서브넷은 하나의 AZ와 연결
@@ -193,7 +202,7 @@
                                    도메인 등록 후 네임서버에 해당 도메인이 어떤 IP로 연결 되었는가 하는 정보 없으면 그 도에인으로 어떤 주소로도 접속 불가
 
                         * NTP : Network Time Protocol(NTP)는 네트워크 상의 연결된 장비 간에 시간 정보를 동기화하기 위한 프로토콜
-                                    계층적 구조로 각각의 계층은 상위 계층으로부터 시간 동기화
+                                계층적 구조로 각각의 계층은 상위 계층으로부터 시간 동기화
 
                         * NetBIOS : Network Basic Input/Output System은 OSI 모형의 세션 계층에 관련된 서비스들을 제공하여 개별 컴퓨터의 
                                     애플리케이션들이 근거리 통신망을 통해 통신할 수 있게 함
