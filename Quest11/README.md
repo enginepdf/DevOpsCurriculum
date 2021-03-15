@@ -89,11 +89,12 @@
             With this mechanism, an attacker could bypass the user authentication or even delete records in your database.
             query = "SELECT * FROM users WHERE login = '" + input_login + "';"
 
+            Instead of interpolating the values manually, you use placeholders ($1, $2), that the library will replace by the escaped version of the array of values.
+
             const text = 'INSERT INTO users(name, email) VALUES($1, $2) RETURNING *'
             const values = ['brianc', 'brian.m.carlson@gmail.com']
             const response = await client.query(text, values)
-
-            Instead of interpolating the values manually, you use placeholders ($1, $2), that the library will replace by the escaped version of the array of values.
+            
             To make sure you never forget to use placeholders you could set up a linter that catches manual interpolations and gives you an error.
 
         Cross-site scripting (XSS)
@@ -125,10 +126,10 @@
 * VPC를 구축하고, 적절한 서브넷 설정, 보안 그룹과 방화벽을 설정해 보세요. 각각의 단계와 구성요소들이 어떤 의미인지 이해해야 합니다.(O)
 
         VPC - QUESTVPC라고 설정
-        Subnet - 2개 생성 됨
-        Network Access Control List(NACL) - 기본 설정 사용. 2개의 서브넷과 연결 됨
+        Subnet - 2개 생성됨
+        Network Access Control List(NACL) - 기본 설정 사용. 2개의 서브넷과 연결됨
         Security Group - default 사용
-        Route Tables - Subnet 2개와 인터넷 게이트웨이 연결 처리 됨
+        Route Tables - Subnet 2개와 인터넷 게이트웨이 연결 처리됨
 
 * 지금까지 구현한 웹 어플리케이션을 VPC 안에서 서비스 해 보세요.(O)
 
@@ -164,8 +165,15 @@
                         하나의 VPC는 N개의 서브넷을 가질 수 있고 최대 크기는 VPC의 크기와 같음(VPC와 동일한 크기의 서브넷 한 개 만들기 가능)
                         N Availability Zone(AZ)만큼 서브넷 만들어 리소스 분산 -> 재해 대응 측면에서 유리
                         리전에 따라 사용 가능한 AZ 개수 다름. 하나의 서브넷은 하나의 AZ와 연결
-                        서브넷 넷마스크 범위는 16(2^(32-16)===65535개)~28(2^(32-28)===16개) 가능
+                        서브넷 넷마스크 범위는 16(2^(32-16)===65536개)~28(2^(32-28)===16개) 가능
                         2개 이상의 AZ를 사용하는 게 일반적이고 기본 VPC에서는 AZ 개수만큼 넷마스크 20(2^(32-20)===2^12)의 서브넷들을 자동 생성
+
+                        AWS reserves 5 IPs address in each Subnet. so if you make 10.0.0.0./20 --> 2^(32-20)-5 IPs are available
+                                Network address
+                                reserved by AWS for the VPC router
+                                reserved by AWS for mapping to Amazon-provided DNS
+                                reserved by AWS for future use
+                                Network broadcast address(AWS does not support broadcast in a VPC)
 
                 1 Route Table
 
@@ -199,7 +207,7 @@
 
                         * 네임서버 : 도메인 이름과 IP의 상호변환을 가능하게 해주는 서버
                                    대부분의 도메인 이름은 2개의 네임서버를 갖고 있어 서로 병렬적으로 동작하면서 네임서비스를 보다 안정적으로 연결
-                                   도메인 등록 후 네임서버에 해당 도메인이 어떤 IP로 연결 되었는가 하는 정보 없으면 그 도에인으로 어떤 주소로도 접속 불가
+                                   도메인 등록 후 네임서버에 해당 도메인이 어떤 IP로 연결 되었는가 하는 정보 없으면 그 도메인으로 어떤 주소로도 접속 불가
 
                         * NTP : Network Time Protocol(NTP)는 네트워크 상의 연결된 장비 간에 시간 정보를 동기화하기 위한 프로토콜
                                 계층적 구조로 각각의 계층은 상위 계층으로부터 시간 동기화
