@@ -63,6 +63,15 @@
 
 * HTTPS와 TLS는 어떤 식으로 동작하나요? HTTPS는 어떤 역사를 가지고 있나요?
 
+        TLS(Transport Layer Security) : TLS는 가장 최신 기술로 더 강력한 버전의 SSL
+
+        HTTPS(Hyper Text Protocol Secure) :  HTTPS는 웹사이트를 SSL/TLS 인증서로 보안하는 경우 URL 창에 표시, SSL을 조합한 HTTP를 HTTPS(HTTP Secure) or HTTP over SSL이라고 부름.
+                                             HTTP 통신하는 소켓 부분을 SSL, TLS라는 프로토콜로 대체
+                                             HTTP는 원래 TCP와 직접 통신, HTTPS에서 HTTP는 SSL과 통신하고 SSL이 TCP와 통신.
+                                             HTTPS의 SSL에서는 공통키(대칭키) 암호화 방식과 공개키 암호화 방식을 혼합한 하이브리드 암호 시스템 사용.
+                                             공통키를 공개키 암호화 방식으로 교환한 다음에 다음부터의 통신은 공통키 암호를 사용하는 방식
+                                             통신할 때마다 암호화를 하면 많은 리소스를 사용하여 서버 한 대당 처리할 수 있는 리퀘스트의 수가 줄어듬
+
 * HTTPS의 서비스 과정에서 인증서는 어떤 역할을 할까요? 인증서는 어떤 체계로 되어 있을까요?
 
         클라이언트와 서버간의 통신을 공인된 제3자(CA, Certificate Authority) 업체가 보증해주는 전자화된 문서
