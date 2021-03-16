@@ -74,7 +74,19 @@
     TCP와 TLS에서 동작하는 HTTP/2의 단점으로 알려진 문제를 해결하면서 안정적이고 안전한 새 전송 프로토콜
 
 ## Quest
-* `xxx.knowre.com`에 해당하는 커스텀 도메인을 하나 부여해 드리겠습니다. Route53을 활용하여 이 도메인의 자체 네임서버를 구축해 보세요.
-* Cloudfront에 연결된 정적인 웹사이트와 ECS에서 서비스 되는 API 서버가 위 도메인으로 서비스 되도록 설정과 연결해 보세요.
-* Certificate Manager를 통해 인증서를 만들어 보세요. 그리고 위 두 서비스가 HTTPS로 서비스될 수 있도록 바꿔 보세요.
-* HTTP로 접속했을 때 HTTPS로 리다이렉트 되도록 설정해 보세요.
+* `xxx.knowre.com`에 해당하는 커스텀 도메인을 하나 부여해 드리겠습니다. Route53을 활용하여 이 도메인의 자체 네임서버를 구축해 보세요.(O)
+
+* Cloudfront에 연결된 정적인 웹사이트와 ECS에서 서비스 되는 API 서버가 위 도메인으로 서비스 되도록 설정과 연결해 보세요.(O)
+
+    Cloudfront - Alias를 이용해 연결 처리
+    API 서버 - Alias를 이용해 ALB 연결 처리
+
+* Certificate Manager를 통해 인증서를 만들어 보세요. 그리고 위 두 서비스가 HTTPS로 서비스될 수 있도록 바꿔 보세요.(O)
+
+    Cloudfront - HTTPS 처리
+    API 서버 - HTTPS 처리
+
+* HTTP로 접속했을 때 HTTPS로 리다이렉트 되도록 설정해 보세요.(O)
+
+    Cloudfront - HTTPS로 리다리렉트 처리
+    API 서버 - HTTPS로 리다이렉트 처리

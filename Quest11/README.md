@@ -168,7 +168,7 @@
                         서브넷 넷마스크 범위는 16(2^(32-16)===65536개)~28(2^(32-28)===16개) 가능
                         2개 이상의 AZ를 사용하는 게 일반적이고 기본 VPC에서는 AZ 개수만큼 넷마스크 20(2^(32-20)===2^12)의 서브넷들을 자동 생성
 
-                        AWS reserves 5 IPs address in each Subnet. so if you make 10.0.0.0./20 --> 2^(32-20)-5 IPs are available
+                        AWS reserves 5 IPs address in each Subnet. so if you make 10.0.0.0/20 --> 2^(32-20)-5 IPs are available
                                 Network address
                                 reserved by AWS for the VPC router
                                 reserved by AWS for mapping to Amazon-provided DNS
