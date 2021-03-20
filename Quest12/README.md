@@ -94,7 +94,7 @@
                                              공통키를 공개키 암호화 방식으로 교환한 다음부터의 통신은 공통키 암호를 사용하는 방식
                                              통신할 때마다 암호화를 하면 많은 리소스를 사용하여 서버 한 대당 처리할 수 있는 리퀘스트의 수가 줄어듬
 
-        TLS(Transport Layer Security) : TLS는 가장 최신 기술로 더 강력한 버전의 SSL(세션 키를 만들 때 유지하고자 할 때 공개키 암호화 방식 사용)
+        TLS(Transport Layer Security) : TLS는 가장 최신 기술로 더 강력한 버전의 SSL(세션 키를 만들 때, 교환하고자 할 때 공개키 암호화 방식 사용)
                                         TLS is a cryptographic protocol that provides end-to-end security of data sent between applications over the Internet. 
                                         It is mostly familiar to users through its use in secure web browsing, and in particular the padlock icon that appears in web browsers when a secure session is established. 
                                         However, it can and indeed should also be used for other applications such as e-mail, file transfers, video/audioconferencing, instant messaging and voice-over-IP, as well as Internet services such as DNS and NTP

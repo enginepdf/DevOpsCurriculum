@@ -52,7 +52,7 @@
         third-party 제공자(트위터, 페이스북, 구글 등)를 이용해서 로그인 할 수 있는 기능을 만듬
         환경 변수 처리(혹은 플랫폼에서 제공하는 환경 변수 처리 방식 사용)
         property만 관리하는 파일 생성
-        AWS Secrets Manager, 1Password 같은 서비스를 사용    
+        AWS Secrets Manager 같은 서비스를 사용    
         you better use a timing safe comparison such as crypto.timingSafeEqual to avoid timing attacks
         you should also either choose a slow hashing function or hash multiple times(해쉬 함수 크랙에 걸리는 시간을 늘려버림)
         you should rate-limit login attempts by IP
@@ -67,7 +67,7 @@
         사용자 및 애플리케이션에서 Secrets Manager API를 호출하여 보안 정보를 검색하여 민감한 정보를 평문으로 하드코딩 할 필요 없음
         정해진 일수마다 비밀번호 로테이션 기능
         Amazon RDS와 통합하여 사용 가능
-        1Password, LastPass
+        HashiCorp - Vault
 
 * 어플리케이션 레벨에서의 보안 전략에는 어떤 것들이 있을까요?
 
