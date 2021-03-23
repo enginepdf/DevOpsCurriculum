@@ -120,7 +120,7 @@
 
 * 만들어 둔 정적인 웹사이트에서, 기존 컨테이너 기반의 API에 더해 Lambda 기반의 API 역시 활용할 수 있도록 수정해 보세요.(O)
 
-        Cloudfront에서 작동하도록 수정(HTTPS 사용을 위해 기존 컨테이너 기반의 API cors 수정 필요). Lambda, API Gateway 기반 API fetch는 동작
+        Cloudfront에서 작동하도록 구성
 
 * API Gateway를 통해 서비스 되고 있는 API가 우리만의 도메인을 가지고 HTTPS로 서비스될 수 있도록 하려면 어떻게 해야 할까요?
 
