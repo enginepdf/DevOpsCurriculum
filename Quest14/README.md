@@ -26,57 +26,84 @@
                저장소에서 이력 추적 가능, 깃허브에서 팀원들과 코드 리뷰 진행 가능(+ 작성한 코드에 대한 이유 등에 대한 투명성)
                CI를 사용해 코드 리뷰가 된 사항을 자동적으로 플랜 및 적용하는 것도 가능하다고 함
 
-        Infrastructure as code (IaC) is the process of managing and provisioning computer data centers through machine-readable definition files, rather than physical hardware configuration or interactive configuration tools.The IT infrastructure managed by this process comprises both physical equipment, such as bare-metal servers, as well as virtual machines, and associated configuration resources. The definitions may be in a version control system. It can use either scripts or declarative definitions, rather than manual processes, but the term is more often used to promote declarative approaches
+        Infrastructure as code (IaC) is the process of managing and provisioning computer data centers through machine-readable definition files, 
+        rather than physical hardware configuration or interactive configuration tools. 
+        The IT infrastructure managed by this process comprises both physical equipment, such as bare-metal servers, as well as virtual machines, and associated configuration resources. 
+        The definitions may be in a version control system. It can use either scripts or declarative definitions, rather than manual processes, but the term is more often used to promote declarative approaches
 
-        They leverage IaC to change, configure, and automate infrastructure, and they also provide visibility, efficiency and flexibility in how infrastructure is managed. These additional attributes provide enterprise-level security and compliance
+        All continuous configuration automation (CCA) tools can be thought of as an extension of traditional IaC frameworks.
+        They leverage IaC to change, configure, and automate infrastructure, and they also provide visibility, efficiency and flexibility in how infrastructure is managed. 
+        These additional attributes provide enterprise-level security and compliance
 
-        IaC can be a key attribute of enabling best practices in DevOps – Developers become more involved in defining configuration and Ops teams get involved earlier in the development process. Tools that utilize IaC bring visibility to the state and configuration of servers and ultimately provide the visibility to users within the enterprise, aiming to bring teams together to maximize their efforts. Automation in general aims to take the confusion and error-prone aspect of manual processes and make it more efficient, and productive. Allowing for better software and applications to be created with flexibility, less downtime, and an overall cost effective way for the company. IaC is intended to reduce the complexity that kills efficiency out of manual configuration. Automation and collaboration are considered central points in DevOps; Infrastructure automation tools are often included as components of a DevOps toolchain
-
-        * DevOps toolchain
-
-            A DevOps toolchain is a set or combination of tools that aid in the delivery, development, and management of software applications throughout the systems development life cycle, as coordinated by an organisation that uses DevOps practices.
+        IaC can be a key attribute of enabling best practices in DevOps – Developers become more involved in defining configuration and Ops teams get involved earlier in the development process. 
+        Tools that utilize IaC bring visibility to the state and configuration of servers and ultimately provide the visibility to users within the enterprise, aiming to bring teams together to maximize their efforts. 
+        Automation in general aims to take the confusion and error-prone aspect of manual processes and make it more efficient, and productive. 
+        Allowing for better software and applications to be created with flexibility, less downtime, and an overall cost effective way for the company. 
+        IaC is intended to reduce the complexity that kills efficiency out of manual configuration. 
+        Automation and collaboration are considered central points in DevOps; Infrastructure automation tools are often included as components of a DevOps toolchain
 
         Generally, DevOps tools fit into one or more activities, which supports specific DevOps initiatives: Plan, Create, Verify, Package, Release, Configure, Monitor, and Version Control
 
-        There are generally two approaches to IaC: declarative (functional) vs. imperative (procedural). The difference between the declarative and the imperative approach is essentially 'what' versus 'how' . The declarative approach focuses on what the eventual target configuration should be; the imperative focuses on how the infrastructure is to be changed to meet this.[6] The declarative approach defines the desired state and the system executes what needs to happen to achieve that desired state. Imperative defines specific commands that need to be executed in the appropriate order to end with the desired conclusion
+        * DevOps toolchain
+
+            A DevOps toolchain is a set or combination of tools that aid in the delivery, development, and management of software applications 
+            throughout the systems development life cycle, as coordinated by an organisation that uses DevOps practices.
+
+        * There are generally two approaches to IaC: declarative (functional) vs imperative (procedural).
+
+            The difference between the declarative and the imperative approach is essentially 'what' versus 'how'
+            The declarative approach focuses on what the eventual target configuration should be; the imperative focuses on how the infrastructure is to be changed to meet this.
+            The declarative approach defines the desired state and the system executes what needs to happen to achieve that desired state. 
+            Imperative defines specific commands that need to be executed in the appropriate order to end with the desired conclusion
+
+        * Continuous configuration automation (CCA) 
+        
+            It is the methodology or process of automating the deployment and configuration of settings and software 
+            for both physical and virtual data center equipment
 
 
 * 테라폼은 어떤 소프트웨어인가요? 다른 IaC와 비교하여 어떤 장점을 가지고 있을까요?
 
         Hashicorp에서 오픈소스로 개발 중인 infrastructure 관리 도구
         서비스 실행에 필요한 환경을 구축하는 도구 - 프로비저닝 도구(Chef, Ansible)
-        IaC(Infrastructure as Code)를 지향하고 있는 도구로 GUI나 웹 콘솔을 사용해 서비스 실행에 필요한 리소스를 관리하는 대신 필요한 리소스들을 
-        선언적인 코드로 작성해 관리할 수 있도록 함
+        IaC(Infrastructure as Code)를 지향하고 있는 도구로 GUI나 웹 콘솔을 사용해 서비스 실행에 필요한 리소스를 관리하는 대신 필요한 리소스들을 선언적인 코드로 작성해 관리할 수 있도록 함
 
         resource : 실제로 생성할 인프라 자원
         provider : Infrastructure Provider(AWS, Azure, Google Cloud Platform)
         backend : 테라폼의 상태를 저장할 공간 지정하는 부분 
-                    remote state - Terraform Cloud, HashiCorp Consul, Amazon S3, Azure Blob Storage, Google Cloud Storage, Alibaba Cloud OSS
         module : 공통적으로 활용할 수 있는 인프라 코드를 한 곳으로 모아서 정의하는 부분
-        remote state : By default, Terraform stores state locally in a file named terraform.tfstate. When working with Terraform in a team, use of a local file makes Terraform usage complicated because each user must make sure they always have the latest state data before running Terraform and make sure that nobody else runs Terraform at the same time.
+        remote state : By default, Terraform stores state locally in a file named terraform.tfstate. 
+        When working with Terraform in a team, use of a local file makes Terraform usage complicated because each user must make sure they always have the latest state data 
+        before running Terraform and make sure that nobody else runs Terraform at the same time.
 
-        With remote state, Terraform writes the state data to a remote data store, which can then be shared between all members of a team. Terraform supports storing state in Terraform Cloud, HashiCorp Consul, Amazon S3, Azure Blob Storage, Google Cloud Storage, Alibaba Cloud OSS, and more.
+        With remote state, Terraform writes the state data to a remote data store, which can then be shared between all members of a team. 
+        Terraform supports storing state in Terraform Cloud, HashiCorp Consul, Amazon S3, Azure Blob Storage, Google Cloud Storage, Alibaba Cloud OSS, and more.
 
         Remote state is implemented by a backend, which you can configure in your configuration's root module.
 
-        CloudFormation은 AWS에 종속적이지만 Terraform은 다양한 Provider 지원(클라우드에 비종속적)
+        - 장점 
+          
+            CloudFormation은 AWS에 종속적이지만 Terraform은 다양한 Provider 지원(클라우드에 비종속적)
 
 * 테라폼의 State는 무엇일까요? 기존에 AWS 콘솔을 통해 정의된 리소스를 테라폼의 State에 가져오려면 어떻게 해야 할까요?
 
-        Terraform must store state about your managed infrastructure and configuration. This state is used by Terraform to map real world resources to your configuration, keep track of metadata, and to improve performance for large infrastructures
+        Terraform must store state about your managed infrastructure and configuration. This state is used by Terraform to map real world resources to your configuration,
+        keep track of metadata, and to improve performance for large infrastructures
 
         This state is stored by default in a local file named "terraform.tfstate", but it can also be stored remotely, which works better in a team environment.
 
-        The primary purpose of Terraform state is to store bindings between objects in a remote system and resource instances declared in your configuration. When Terraform creates a remote object in response to a change of configuration, it will record the identity of that remote object against a particular resource instance, and then potentially update or delete that object in response to future configuration changes.
+        The primary purpose of Terraform state is to store bindings between objects in a remote system and resource instances declared in your configuration. 
+        When Terraform creates a remote object in response to a change of configuration, it will record the identity of that remote object 
+        against a particular resource instance, and then potentially update or delete that object in response to future configuration changes.
 
-        Terraform expects a one-to-one mapping between configured resource instances and remote objects. Normally that is guaranteed by Terraform being the one to create each object and record its identity in the state, or to destroy an object and then remove the binding for it
-
+        Terraform expects a one-to-one mapping between configured resource instances and remote objects. 
+        Normally that is guaranteed by Terraform being the one to create each object and record its identity in the state, or to destroy an object and then remove the binding for it
 
         - 기존에 AWS 콘솔에서 정의된 리소스를 테라폼의 state로 가져오기
 
           terraform import [options] ADDRESS ID
 
-             local의 .terraform에 해당 리소스의 상태 정보를 저장해주는 역할
+            local의 .terraform에 해당 리소스의 상태 정보를 저장해주는 역할
             Apply 전까지는 backend에 저장되지 않음
             import 이후 plan을 하면 로컬에 해당 코드가 없어 리소스가 삭제 또는 변경되다는 결과를 받음
 
