@@ -60,8 +60,7 @@
         Lerna is a tool used to manage JS projects with multiple packages. It is built on Yarn
         Yarn is a JS dependency management tool that also supports monorepos through workspaces
 
-        Monorepo tools provide several functionalities, such as bootstrapping and linking the local packages among themselves, building the code, validating them, 
-        publishing them to a package registry, etc
+        Monorepo tools provide several functionalities, such as bootstrapping and linking the local packages among themselves, building the code, validating them, publishing them to a package registry, etc
 
 * 린팅은 어떤 개념인가요? 린팅을 할 때의 장점은 무엇일까요? 자바스크립트의 경우 어떻게 구현하는 것이 좋을까요?
 
