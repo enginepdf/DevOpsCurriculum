@@ -84,6 +84,28 @@
         - 장점 
           
             CloudFormation은 AWS에 종속적이지만 Terraform은 다양한 Provider 지원(클라우드에 비종속적)
+            remote state를 사용하면 비밀번호 같은 중요 정보를 노출시키지 않아도 되고 협업에 도움 됨(remote state, backend.tf)
+            배우면서 생각했는데 쉽고 어렵고의 관점보다는 ORM으로 Mysql 처리하는 것처럼 1:1 매핑을 위한 키워드 등을 알아야 한다는 단점이 있지만, 코드로 인프라 관리 가능(자동화)
+
+            속도와 안전 
+
+              코드로 실행 되어 수작업보다 빠르고 실수 방지 가능
+
+            문서화
+
+              코드를 통해 인프라 파악 가능
+
+            형상 관리
+
+              Git 등을 이용해 변경 기록 쉽게 볼 수 있음
+
+            리뷰 및 테스트
+
+              배포 전에 코드 리뷰와 테스트를 통해 문제 발생을 예방
+            
+            재사용
+
+              한번 terraform 코드 사용해서 인프라 구축하면 그 후 추가하는 인프라들을 구성하기 쉬워짐
 
 * 테라폼의 State는 무엇일까요? 기존에 AWS 콘솔을 통해 정의된 리소스를 테라폼의 State에 가져오려면 어떻게 해야 할까요?
 
@@ -102,6 +124,8 @@
         - 기존에 AWS 콘솔에서 정의된 리소스를 테라폼의 state로 가져오기
 
           terraform import [options] ADDRESS ID
+
+            Import will try and find the infrastructure resource identified with ID and import the state into terraform.tfstate with resource id ADDRESS
 
             local의 .terraform에 해당 리소스의 상태 정보를 저장해주는 역할
             Apply 전까지는 backend에 저장되지 않음
