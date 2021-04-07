@@ -92,18 +92,13 @@
         
         ```lerna.json
         {
-            "npmClient": "npm" || "yarn",
-            "bootstrap": {
-                "ignore": "" ,
-                "npmClientArgs": [ "npm install " ],
-            },
-            "packages": [ "packages/*" ],
-            // "useWorkspaces": true,
+            "npmClient": "npm",
+            "packages": [ "./", "*" ],
             "version": "0.0.0"
         }
         ```
 
-* eslint의 기본 설정을 이용해 이 코드들을 린팅해 보세요. 모든 패키지를 명령 하나로 한 번에 린팅하려면 어떻게 해야 할까요?
+* eslint의 기본 설정을 이용해 이 코드들을 린팅해 보세요.(O) 모든 패키지를 명령 하나로 한 번에 린팅하려면 어떻게 해야 할까요?
         
         ```packages/package.json
 
