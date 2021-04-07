@@ -107,6 +107,17 @@
 
               한번 terraform 코드 사용해서 인프라 구축하면 그 후 추가하는 인프라들을 구성하기 쉬워짐
 
+            Ansible의 경우 특정 언어에 종속된 CLI를 사용하지 않고 yml를 통해 클라우드를 관리할 수 있지만 terraform은 현 상태와 새롭게 업데이트 되는 상태를 비교해 줄 수 있다고 함(git의 diff와 비슷하다고 함)
+            macOS, Linux, Windows 시스템에서 사용 가능
+
+            * https://phoenixnap.com/blog/ansible-vs-terraform-vs-puppet  --> Terraform의 경우 선언된 상태를 지속적으로 자동적으로 유지시켜줌
+
+            Ansible and Terraform have some critical differences, but the two do have some similarities as well. They differ when we look at two DevOps concepts: orchestration and configuration management, which are types of tools. Terraform is an orchestration tool. Ansible is mainly a configuration management tool (CM)
+
+            Orchestration tools have one goal: to ensure an environment is continuously in its ‘desired state.’ Terraform is built for this as it stores the state of the environment, and when something does not function properly, it automatically computes and restores the system after reloading. It’s perfect for environments that need a constant and invariable state. ‘Terraform Apply’ is made to resolve all anomalies efficiently.
+
+            Configuration management tools are different; they don’t reset a system. Instead, they locally repair an issue. Puppet has a design that installs and manages software on servers. Like Puppet, Ansible also can configure each action and instrument and ensure its functioning correctly without any error or damage. A CM tool works to repair a problem instead of replacing the system entirely. In this case, Ansible is a bit of a hybrid since it can do both, perform orchestration and replace infrastructure. Terraform is more widely used. It’s considered the superior product since it has advanced state management capabilities, which Ansible does not.
+
 * 테라폼의 State는 무엇일까요? 기존에 AWS 콘솔을 통해 정의된 리소스를 테라폼의 State에 가져오려면 어떻게 해야 할까요?
 
         Terraform must store state about your managed infrastructure and configuration. This state is used by Terraform to map real world resources to your configuration,
