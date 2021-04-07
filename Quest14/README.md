@@ -31,7 +31,7 @@
         The IT infrastructure managed by this process comprises both physical equipment, such as bare-metal servers, as well as virtual machines, and associated configuration resources. 
         The definitions may be in a version control system. It can use either scripts or declarative definitions, rather than manual processes, but the term is more often used to promote declarative approaches
 
-        All continuous configuration automation (CCA) tools can be thought of as an extension of traditional IaC frameworks.
+        All Continuous Configuration Automation(CCA) tools can be thought of as an extension of traditional IaC frameworks.
         They leverage IaC to change, configure, and automate infrastructure, and they also provide visibility, efficiency and flexibility in how infrastructure is managed. 
         These additional attributes provide enterprise-level security and compliance
 
@@ -56,7 +56,7 @@
             The declarative approach defines the desired state and the system executes what needs to happen to achieve that desired state. 
             Imperative defines specific commands that need to be executed in the appropriate order to end with the desired conclusion
 
-        * Continuous configuration automation (CCA) 
+        * Continuous Configuration Automation(CCA) 
         
             It is the methodology or process of automating the deployment and configuration of settings and software 
             for both physical and virtual data center equipment
@@ -140,13 +140,13 @@
           }
 
           This example will import an AWS instance into the aws_instance resource named foo:
-            $ terraform import aws_instance.foo i-abcd1234
+            $ terraform import aws_instance.foo i-a
 
           The example below will import an AWS instance into the aws_instance resource named bar into a module named foo:
-            $ terraform import module.foo.aws_instance.bar i-abcd1234
+            $ terraform import module.foo.aws_instance.bar i-a
 
           The example below will import an AWS instance into the first instance of the aws_instance resource named baz configured with count:
-            $ terraform import 'aws_instance.baz[0]' i-abcd1234
+            $ terraform import 'aws_instance.baz[0]' i-aa
 
 ## Quest
 * 지금까지 구축했던 다음의 인프라를 모두 삭제하고(O) 테라폼 코드로 재구축해 보세요.
