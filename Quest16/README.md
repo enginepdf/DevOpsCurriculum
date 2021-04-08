@@ -121,6 +121,7 @@
 
             Private Repository는 유료
             빌드가 많이 필요한 서비스의 경우 Jenkins 같은 서비스의 관리 비용과 가격 비교해보는 것도 좋을 것 같음
+            공식 문서가 잘 작성된 편이 아니라고 함
 
         Github Actions
 
@@ -137,6 +138,9 @@
 
             Private Repository에 대해서는 runner(워크플로우 구동 환경)에 따라 분당/시간당 금액을 청구한다고 함(https://github.com/features/actions)
             사용시간에 따른 비용 청구로 빌드가 많이 필요한 서비스의 경우 Jenkins 같은 서비스의 관리 비용과 가격 비교해보는 것도 좋을 것 같음
+            공식 문서가 잘 작성된 편이 아니라고 함
+            Fork된 레포로부터 Pull Request를 지원하지 않는다고 함
+            marketplace에 있는 action들이 아직 풍부하지 않다고 함
 
         AWS Codebuild
 
@@ -156,13 +160,13 @@
 
             AWS IAM에 대한 이해 등이 필요함
             사용시간에 따른 비용 청구로 빌드가 많이 필요한 서비스의 경우 Jenkins 같은 서비스의 관리 비용과 가격 비교해보는 것도 좋을 것 같음
-
+            GitHub와의 통합만이 용이하고, AWS 내에서만 사용이 최적화되어 있다고 함
 
 
 ## Quest
 * AWS Codebuild를 이용하여, 특정 브랜치에 푸시를 하면 테스트를 한 뒤 모노리포에 있는 모든 패키지가 한 번에 배포되는 시스템을 만들어 보세요.
 
-        ```buildspec.yml on root for CodeBuild(수정 필요함)
+        ```buildspec.yml on root for CodeBuild(수정 필요함)     main 브랜치에서 푸시를 하면 작동
 
             version: 0.2
 
