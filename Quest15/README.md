@@ -103,8 +103,9 @@
         ```packages/package.json
 
             "scripts": {
-                "lint": "eslint .js --quiet"
+                "lint": "eslint .js --fix"    // eslint [File | Directory] --ext .jsx
             }
         ```
         
-        npx lerna run lint
+        npx lerna run lint 
+            client, server 로컬에서 린팅 작동 확인
