@@ -176,15 +176,15 @@
                         nodejs: 
                     commands:
                         - echo Entering install phase...
+                        - npx lerna run lint
                 pre_build:
                     commands: 
                         - echo Entering pre_build phase... 
-                        - npx lerna run lint
+                        - npx lerna run test
                 build: 
                     commands:
                         - echo Entering build phase...
                         - ./build.sh
-                        - npx lerna run test
                         - ./deploy.sh
 
         ```
