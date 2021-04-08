@@ -114,13 +114,13 @@
 
             Ansible and Terraform have some critical differences, but the two do have some similarities as well.
             They differ when we look at two DevOps concepts: orchestration and configuration management, which are types of tools. 
-            Terraform is an orchestration tool. Ansible is mainly a configuration management tool (CM)
+            Terraform is an orchestration tool. Ansible is mainly a Configuration Management tool(CM)
 
             Orchestration tools have one goal: to ensure an environment is continuously in its ‘desired state.’ Terraform is built for this as it stores the state of the environment, 
             and when something does not function properly, it automatically computes and restores the system after reloading. 
             It’s perfect for environments that need a constant and invariable state. ‘Terraform Apply’ is made to resolve all anomalies efficiently.
 
-            Configuration management tools are different; they don’t reset a system. Instead, they locally repair an issue. 
+            Configuration Management tools are different; they don’t reset a system. Instead, they locally repair an issue. 
             Puppet has a design that installs and manages software on servers. 
             Like Puppet, Ansible also can configure each action and instrument and ensure its functioning correctly without any error or damage. 
             A CM tool works to repair a problem instead of replacing the system entirely. In this case, Ansible is a bit of a hybrid since it can do both, perform orchestration and replace infrastructure. 
@@ -128,6 +128,7 @@
 
 * 테라폼의 State는 무엇일까요? 기존에 AWS 콘솔을 통해 정의된 리소스를 테라폼의 State에 가져오려면 어떻게 해야 할까요?
 
+        State는 실제 인프라와 설정값의 1:1 매핑 정보에 관한 것
         Terraform must store state about your managed infrastructure and configuration. This state is used by Terraform to map real world resources to your configuration,
         keep track of metadata, and to improve performance for large infrastructures
 
